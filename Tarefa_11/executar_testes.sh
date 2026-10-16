@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Tarefa 11: compara schedule e collapse(2) usando OpenMP.
-# Uso: ./executar_testes.sh [modo] [repeticoes]
-# Exemplo: ./executar_testes.sh 2 3
+# Uso: bash executar_testes.sh [modo] [repeticoes] [nx] [ny] [passos]
+# Exemplo com mais carga: bash executar_testes.sh 2 3 400 400 5000
 
 set -euo pipefail
 
@@ -9,6 +9,14 @@ PASTA=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 RESULTADOS="$PASTA/resultados_openmp"
 MODO="${1:-2}"
 REPETICOES="${2:-1}"
+NX="${3:-80}"
+NY="${4:-80}"
+PASSOS="${5:-1000}"
+
+if (( $# > 5 )); then
+    echo "Uso: bash executar_testes.sh [modo] [repeticoes] [nx] [ny] [passos]" >&2
+    exit 1
+fi
 
 if [[ ! "$MODO" =~ ^[012]$ ]]; then
     echo "Modo invalido. Use 0 (parado), 1 (uniforme) ou 2 (perturbacao)." >&2
@@ -16,6 +24,11 @@ if [[ ! "$MODO" =~ ^[012]$ ]]; then
 fi
 if [[ ! "$REPETICOES" =~ ^[1-9][0-9]*$ ]]; then
     echo "Quantidade de repeticoes invalida. Use um inteiro positivo." >&2
+    exit 1
+fi
+if [[ ! "$NX" =~ ^[1-9][0-9]*$ || ! "$NY" =~ ^[1-9][0-9]*$ ||
+      ! "$PASSOS" =~ ^[1-9][0-9]*$ ]] || (( NX < 2 || NY < 2 )); then
+    echo "Use nx e ny inteiros >= 2 e passos inteiro positivo." >&2
     exit 1
 fi
 if ! command -v gcc >/dev/null 2>&1; then
@@ -27,10 +40,11 @@ mkdir -p "$RESULTADOS"
 
 # Compila as duas versoes a partir dos mesmos arquivos-fonte.
 echo "Compilando as versoes..."
-gcc -O2 -fopenmp "$PASTA/fluid_sim.c" "$PASTA/fluid.c" -lm -o "$PASTA/fluid_normal"
-gcc -O2 -fopenmp -DUSE_COLLAPSE "$PASTA/fluid_sim.c" "$PASTA/fluid.c" -lm -o "$PASTA/fluid_collapse"
+DEFINICOES=("-DNX=$NX" "-DNY=$NY" "-DSTEPS=$PASSOS")
+gcc -O2 -fopenmp "${DEFINICOES[@]}" "$PASTA/fluid_sim.c" "$PASTA/fluid.c" -lm -o "$PASTA/fluid_normal"
+gcc -O2 -fopenmp -DUSE_COLLAPSE "${DEFINICOES[@]}" "$PASTA/fluid_sim.c" "$PASTA/fluid.c" -lm -o "$PASTA/fluid_collapse"
 
-# Isola os CSVs dos frames: as execucoes nao sobrescrevem os frames existentes.
+# Isola os logs das execucoes. O modo benchmark nao grava frames nem metadata.
 TEMP_DIR=$(mktemp -d)
 trap 'rm -rf -- "$TEMP_DIR"' EXIT
 
@@ -44,22 +58,27 @@ VERSOES=("normal" "collapse")
 
 # O OpenMP deve respeitar a quantidade solicitada de threads.
 export OMP_DYNAMIC=FALSE
+export LC_ALL=C
 
-echo "Modo: $MODO | Repeticoes por configuracao: $REPETICOES"
+# Registra a carga utilizada sem alterar o formato dos CSVs existentes.
+printf 'MODO %s\nNX %s\nNY %s\nSTEPS %s\nREPETICOES %s\n' \
+    "$MODO" "$NX" "$NY" "$PASSOS" "$REPETICOES" > "$RESULTADOS/configuracao.txt"
+
+echo "Modo: $MODO | Malha: $NX x $NY | Passos: $PASSOS | Repeticoes: $REPETICOES"
 for versao in "${VERSOES[@]}"; do
     for threads in "${THREADS[@]}"; do
         for schedule in "${SCHEDULES[@]}"; do
             for ((r = 1; r <= REPETICOES; r++)); do
-                # Executa dentro da pasta temporaria por causa dos frames e metadata.
+                # Mede o calculo sem o custo e o volume dos arquivos de visualizacao.
                 (
                     cd "$TEMP_DIR"
                     OMP_NUM_THREADS="$threads" OMP_SCHEDULE="$schedule" \
-                        "$PASTA/fluid_$versao" "$MODO" > "$TEMP_DIR/saida.log"
+                        "$PASTA/fluid_$versao" "$MODO" --benchmark > "$TEMP_DIR/saida.log"
                 )
 
                 # O programa ja mede apenas compute_next_state + swap_fields.
                 tempo=$(awk '/^Tempo de calculo:/ {print $(NF-1); exit}' "$TEMP_DIR/saida.log")
-                if [[ -z "$tempo" ]]; then
+                if ! awk -v tempo="$tempo" 'BEGIN { exit !(tempo ~ /^[0-9]+[.][0-9]+$/ && tempo > 0) }'; then
                     echo "Nao foi possivel ler o tempo da execucao." >&2
                     exit 1
                 fi
@@ -71,7 +90,7 @@ for versao in "${VERSOES[@]}"; do
             done
         done
     done
- done
+done
 
 # Media dos tempos e speedup relativo a 1 thread, static, sem collapse.
 awk -F';' '
@@ -105,4 +124,5 @@ echo
 echo "Testes concluidos. Resultados:"
 echo "  $ARQUIVO_TEMPOS"
 echo "  $ARQUIVO_RESUMO"
-echo "Os frames temporarios dos testes foram descartados."
+echo "  $RESULTADOS/configuracao.txt"
+echo "Nenhum frame foi gravado durante os testes."
