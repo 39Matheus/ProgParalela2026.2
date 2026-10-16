@@ -1,0 +1,5 @@
+bin/
+__pycache__/
+slurm-*.out
+tarefa12-*.out
+tarefa12-*.err
