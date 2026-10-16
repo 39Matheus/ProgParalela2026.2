@@ -1,0 +1,27 @@
+\begin{longtable}{llrrrrr}
+\caption{Resultados da carga de $400\times400$ células e 5.000 passos. $s$ é o desvio padrão amostral; CV é o coeficiente de variação.}\label{tab:resultados}\\
+\toprule Versão & Schedule & Threads & Média (s) & $s$ (s) & Speedup & CV (\%) \\
+\midrule\endfirsthead
+\toprule Versão & Schedule & Threads & Média (s) & $s$ (s) & Speedup & CV (\%) \\
+\midrule\endhead
+\bottomrule\endfoot
+Normal & \texttt{static} & 1 & 5,755 & 0,026 & 1,000 & 0,45 \\
+Normal & \texttt{dynamic,8} & 1 & 5,595 & 0,123 & 1,029 & 2,21 \\
+Normal & \texttt{guided,8} & 1 & 5,451 & 0,095 & 1,056 & 1,74 \\
+Normal & \texttt{static} & 2 & 2,899 & 0,029 & 1,985 & 1,01 \\
+Normal & \texttt{dynamic,8} & 2 & 2,907 & 0,020 & 1,980 & 0,68 \\
+Normal & \texttt{guided,8} & 2 & 2,801 & 0,020 & 2,055 & 0,73 \\
+Normal & \texttt{static} & 4 & 2,054 & 0,420 & 2,801 & 20,43 \\
+Normal & \texttt{dynamic,8} & 4 & 1,777 & 0,071 & 3,239 & 3,99 \\
+Normal & \texttt{guided,8} & 4 & 1,762 & 0,038 & 3,267 & 2,15 \\
+\midrule
+Collapse & \texttt{static} & 1 & 6,041 & 0,057 & 0,953 & 0,95 \\
+Collapse & \texttt{dynamic,8} & 1 & 9,759 & 0,015 & 0,590 & 0,16 \\
+Collapse & \texttt{guided,8} & 1 & 6,099 & 0,028 & 0,944 & 0,45 \\
+Collapse & \texttt{static} & 2 & 3,211 & 0,040 & 1,792 & 1,23 \\
+Collapse & \texttt{dynamic,8} & 2 & 9,505 & 0,118 & 0,606 & 1,25 \\
+Collapse & \texttt{guided,8} & 2 & 3,155 & 0,040 & 1,824 & 1,28 \\
+Collapse & \texttt{static} & 4 & 2,225 & 0,347 & 2,587 & 15,59 \\
+Collapse & \texttt{dynamic,8} & 4 & 6,890 & 0,226 & 0,835 & 3,28 \\
+Collapse & \texttt{guided,8} & 4 & 1,943 & 0,024 & 2,962 & 1,25 \\
+\end{longtable}
