@@ -4,9 +4,10 @@ A referência prioritária foi `ArquivosRemotosNPAD.zip`. Seu conteúdo foi
 inspecionado na área de trabalho; os arquivos pessoais do pacote e as outras
 tarefas não foram incorporados ao repositório.
 
-`ArquivosLocais.zip` excedeu o limite de transferência de 32 MiB e não pôde
-ser lido. Portanto, esta adaptação não afirma ter comparado seu conteúdo com
-o remoto. Um pacote local menor permitirá essa comparação depois.
+O primeiro `ArquivosLocais.zip` excedeu o limite de transferência de 32 MiB.
+O autor enviou depois uma versão menor, que foi lida e comparada com o ZIP
+remoto. Essa conferência confirmou a configuração já adotada; não exigiu
+alterar a implementação da Tarefa 12.
 
 ## O que foi aproveitado
 
@@ -49,3 +50,25 @@ a matriz da Tarefa 12, não valores que tenham sido testados nessa conta.
 Cada campanha agora compila em seu próprio diretório para evitar colisões
 caso mais de um job seja submetido. O nome da versão, os hashes dos fontes,
 o compilador e a opção `-O3` ficam registrados com os resultados.
+
+## Conferência complementar dos arquivos locais
+
+- `Done/Tarefa_14/job.sh` coincide com o remoto desconsiderando espaços e
+  quebras de linha finais; o fonte `tarefa14.c` e o log correspondente também
+  coincidem.
+- Os três fontes da Tarefa 18 (`aux18.c`, `t18.c` e `somas.c`) coincidem com os
+  remotos, assim como `heat.c` e `heat_t18.c` da Tarefa 19.
+- O `Tarefa_18/jobs.sh` local difere do remoto: seu bloco CPU solicita
+  `intel-512`, usa `ntasks-per-node=8` e define threads por `SLURM_NTASKS`.
+  O remoto usa `intel-128`, uma tarefa, `cpus-per-task` e cinco repetições.
+  Foi mantida a organização remota de uma tarefa OpenMP com várias threads.
+- Os benchmarks locais das tarefas 15 a 17 possuem matrizes de tamanhos e
+  equipes, logs completos, repetições e média/desvio amostral. Essas práticas
+  já estão presentes na Tarefa 12; seus mecanismos MPI não foram incorporados.
+- Os exemplos da Tarefa 4 deixam inicialização e checksum fora do intervalo
+  cronometrado. A Tarefa 12 já faz isso com a inicialização e os diagnósticos
+  finais; não foi necessário mudar a medição.
+
+Nenhum executável dos pacotes foi executado, e os arquivos das outras tarefas
+não foram copiados para a Tarefa 12. Não foram feitos novos testes de desempenho
+nem submetidos jobs ao NPAD nesta conferência documental.
