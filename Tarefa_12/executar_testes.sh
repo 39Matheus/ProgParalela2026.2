@@ -6,7 +6,7 @@ TAMANHOS="${TAMANHOS:-200 400 800}"
 THREADS="${THREADS:-1 2 4}"
 PASSOS="${PASSOS:-2000}"
 MODO="${MODO:-2}"
-REPETICOES="${REPETICOES:-3}"
+REPETICOES="${REPETICOES:-5}"
 AQUECIMENTOS="${AQUECIMENTOS:-1}"
 CC="${CC:-gcc}"
 
@@ -37,11 +37,12 @@ done
 [[ -v equipes_vistas[1] ]] || { echo "Inclua 1 em THREADS para a referencia." >&2; exit 1; }
 command -v python3 >/dev/null || { echo "Python 3 nao encontrado." >&2; exit 1; }
 
-export OMP_DYNAMIC=FALSE OMP_SCHEDULE=static LC_ALL=C
+export OMP_DYNAMIC=FALSE OMP_SCHEDULE=static LC_ALL=C PYTHONIOENCODING=utf-8
 BASE="${RESULTADOS_BASE:-$PASTA/resultados}"
 EXECUCAO="$BASE/execucao_$(date -u +%Y%m%dT%H%M%SZ)_$$"
 mkdir -p "$EXECUCAO/logs"
-bash "$PASTA/compilar.sh" > "$EXECUCAO/compilacao.log" 2>&1
+BINARIOS="$EXECUCAO/bin"
+BIN_DIR="$BINARIOS" bash "$PASTA/compilar.sh" > "$EXECUCAO/compilacao.log" 2>&1
 python3 - "$EXECUCAO/configuracao.json" "$PASSOS" "$MODO" "$REPETICOES" \
     "$AQUECIMENTOS" "$TAMANHOS" "$THREADS" <<'PY'
 import json, os, sys
@@ -49,7 +50,8 @@ path, steps, mode, repeats, warm, sizes, threads = sys.argv[1:]
 data = dict(passos=int(steps), modo=int(mode), repeticoes=int(repeats),
             aquecimentos=int(warm), tamanhos=list(map(int, sizes.split())),
             threads=list(map(int, threads.split())), versoes=['v0', 'v1', 'v2'],
-            schedule='static', ambiente='slurm' if os.getenv('SLURM_JOB_ID') else 'local')
+            schedule='static', otimizacao='-O3',
+            ambiente='slurm' if os.getenv('SLURM_JOB_ID') else 'local')
 with open(path, 'w') as file:
     json.dump(data, file, indent=2)
     file.write('\n')
@@ -59,22 +61,25 @@ PY
     hostname
     uname -a
     "$CC" --version
+    python3 --version
     lscpu
-    printf 'SLURM_JOB_ID=%s\nSLURM_JOB_NODELIST=%s\nSLURM_CPUS_PER_TASK=%s\n' \
-        "${SLURM_JOB_ID:-local}" "${SLURM_JOB_NODELIST:-local}" "${SLURM_CPUS_PER_TASK:-local}"
+    printf 'SLURM_JOB_ID=%s\nSLURM_JOB_NODELIST=%s\nSLURM_JOB_PARTITION=%s\nSLURM_CPUS_PER_TASK=%s\n' \
+        "${SLURM_JOB_ID:-local}" "${SLURM_JOB_NODELIST:-local}" \
+        "${SLURM_JOB_PARTITION:-local}" "${SLURM_CPUS_PER_TASK:-local}"
     printf 'OMP_DYNAMIC=%s\nOMP_SCHEDULE=%s\n' "$OMP_DYNAMIC" "$OMP_SCHEDULE"
-    if command -v module >/dev/null 2>&1; then module list 2>&1; fi
+    if command -v module >/dev/null 2>&1; then module list 2>&1 || true; fi
 } > "$EXECUCAO/ambiente.txt"
 (
     cd "$PASTA"
-    sha256sum fluid.c fluid.h fluid_sim.c compilar.sh executar_testes.sh analisar_resultados.py
+    sha256sum fluid.c fluid.h fluid_sim.c compilar.sh executar_testes.sh analisar_resultados.py \
+        submeter_npad.sh jobs.sh
 ) > "$EXECUCAO/fontes.sha256"
 
 CSV="$EXECUCAO/tempos.csv"
 printf 'versao;nx;ny;passos;modo;threads_solicitadas;threads_reais;repeticao;tempo_segundos;media_u;media_v;max_pert;rms_pert\n' > "$CSV"
 executar() {
     local versao="$1" n="$2" p="$3" repeticao="$4" log="$5"
-    OMP_NUM_THREADS="$p" "$PASTA/bin/v$versao" "$n" "$n" "$PASSOS" "$MODO" > "$log" 2>&1 || {
+    OMP_NUM_THREADS="$p" "$BINARIOS/v$versao" "$n" "$n" "$PASSOS" "$MODO" > "$log" 2>&1 || {
         cat "$log" >&2; echo "Execucao interrompida. Logs: $EXECUCAO" >&2; exit 1;
     }
     if (( repeticao > 0 )); then

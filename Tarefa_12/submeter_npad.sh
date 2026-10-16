@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Modelo: confirmar particao, modulos e recursos antes da primeira submissao.
+# Baseado no job CPU remoto da Tarefa 18; conferir a disponibilidade ao submeter.
+#SBATCH --partition=intel-128
 #SBATCH --job-name=tarefa12
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -14,11 +15,15 @@ set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
 [[ -f executar_testes.sh ]] || { echo "Submeta a partir da pasta Tarefa_12." >&2; exit 1; }
 
-# Se necessario, inserir aqui o module load do GCC disponivel na sua conta.
-# Nao ha nome de particao ou modulo presumido neste modelo.
+# O exemplo remoto usa gcc diretamente no PATH, sem module load.
+# Se o ambiente mudar, carregue aqui o modulo apropriado.
+export CC="${CC:-gcc}"
+command -v "$CC" >/dev/null || { echo "Compilador nao encontrado: $CC" >&2; exit 1; }
+command -v python3 >/dev/null || { echo "Python 3 nao encontrado." >&2; exit 1; }
 if [[ -z "${THREADS:-}" ]]; then
     THREADS="1"
     for (( p=2; p<=SLURM_CPUS_PER_TASK; p*=2 )); do THREADS+=" $p"; done
     export THREADS
 fi
-srun --ntasks=1 --cpus-per-task="$SLURM_CPUS_PER_TASK" bash executar_testes.sh
+# Como no job CPU remoto: os executaveis herdam a alocacao do batch.
+bash executar_testes.sh

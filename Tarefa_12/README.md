@@ -5,6 +5,11 @@ de computação do NPAD**. A Tarefa 11 e seu relatório foram preservados.
 As medições no NPAD ainda serão feitas; esta pasta não contém resultados
 atribuídos ao supercomputador.
 
+A configuração de submissão foi adaptada ao **job CPU remoto da Tarefa 18**
+enviado pelo autor: partição `intel-128`, GCC diretamente no `PATH`, compilação
+com `-O3` e cinco repetições. Veja a origem das escolhas em
+[`REFERENCIAS_NPAD.md`](REFERENCIAS_NPAD.md).
+
 O material de referência está em [`../SlidesAulas.pdf`](../SlidesAulas.pdf).
 O limite de conteúdo adotado é a **página 55 do PDF, slide numerado 57**, onde
 aparece a definição da Tarefa 12. As mudanças usam laços, índices, `parallel`,
@@ -73,12 +78,12 @@ TAMANHOS="200 400 800"    # Cada N produz uma malha N x N.
 THREADS="1 2 4"          # No modelo SLURM: potências de 2 até a alocação.
 PASSOS=2000
 MODO=2
-REPETICOES=3
+REPETICOES=5
 AQUECIMENTOS=1
 ```
 
 A campanha mede todas as combinações de versão, tamanho e equipe. Todos usam
-`-O2`, `schedule(runtime)`, `OMP_SCHEDULE=static` e `OMP_DYNAMIC=FALSE`. Assim,
+`-O3`, `schedule(runtime)`, `OMP_SCHEDULE=static` e `OMP_DYNAMIC=FALSE`. Assim,
 a mudança de schedule não se mistura às mudanças entre versões. O trabalho
 por célula é uniforme e a Tarefa 11 já mostrou o custo de blocos pequenos com
 distribuição dinâmica.
@@ -179,10 +184,16 @@ Cada execução cria uma pasta nova em `resultados/execucao_DATA_UTC_PID/`:
 | `eficiencia_v*.csv` | Matriz de eficiência para cada versão. |
 | `fraca.csv` | Diagonal de trabalho por thread constante. |
 | `configuracao.json` | Carga, equipes, repetições, aquecimento e indicação local/SLURM. |
-| `ambiente.txt` | Hostname, hardware, compilador, data UTC e alocação SLURM. |
+| `ambiente.txt` | Hostname, hardware, GCC, Python, data UTC, partição e alocação SLURM. |
 | `fontes.sha256` | Identificação exata dos fontes e scripts medidos. |
 | `compilacao.log`, `logs/` | Compilação, aquecimentos e todas as saídas das execuções. |
 | `observacoes.txt` | Limites da campanha e avisos sobre duração e variabilidade. |
+
+Cada campanha compila seus próprios executáveis em `bin/` dentro dessa pasta.
+Assim, submissões simultâneas não substituem os programas umas das outras.
+Esses binários são ignorados pelo Git; a compilação manual com `compilar.sh`
+continua usando o `bin/` da pasta da tarefa. `BIN_DIR` permite alterar esse
+destino quando necessário.
 
 A análise rejeita matriz incompleta, repetições duplicadas, tempos inválidos,
 threads divergentes e diagnósticos finais incompatíveis entre versões/equipes.
@@ -205,31 +216,52 @@ depois de trazer os resultados.
 
 ## Preparação para o NPAD — execução em uma próxima etapa
 
-`submeter_npad.sh` é um **modelo ajustável**, não uma confirmação da fila e dos
-módulos da sua conta. Reserva um único nó, uma tarefa e 16 CPUs por tarefa.
-Não fixa partição nem nome de módulo. Os recursos, a fila e a duração serão
-conferidos quando formos trabalhar no acesso ao NPAD.
+`submeter_npad.sh` usa **`intel-128`**, a partição do exemplo remoto de CPU.
+Solicita um nó, uma tarefa, 16 CPUs por tarefa e uma hora. O limite de tempo
+é maior que o do exemplo porque esta campanha percorre uma matriz de cargas
+e equipes. A disponibilidade e os limites atuais da partição ainda serão
+conferidos na sua conta.
+
+O GCC é usado diretamente do `PATH`, como no exemplo enviado. Não foi inventado
+um nome de módulo. Se o ambiente mudar, é possível carregar o módulo adequado
+ou informar `CC` com o caminho do GCC. O script exige GCC e Python 3 antes de
+iniciar a campanha.
 
 Quando essa etapa chegar, na pasta `Tarefa_12` do supercomputador:
 
 ```bash
-# Depois de confirmar a partição e carregar o GCC apropriado:
+# Depois de confirmar os recursos disponíveis:
+bash jobs.sh
+
+# A submissão direta também funciona:
 sbatch submeter_npad.sh
 ```
 
-A compilação é refeita dentro da alocação, e o `srun` inicia a campanha no nó
-de computação. Todas as versões e equipes dessa campanha usam a mesma alocação.
+A compilação é refeita dentro da alocação, e o script do batch inicia a
+campanha diretamente, como no exemplo remoto de CPU. Todas as versões e
+equipes dessa campanha usam a mesma alocação.
 Os testes de desempenho não devem ser executados diretamente no nó de login.
 O modelo verifica que está dentro de um job SLURM.
 
 A carga padrão pode ser ajustada sem editar os fontes, por exemplo:
 
 ```bash
-PASSOS=5000 REPETICOES=5 sbatch submeter_npad.sh
+PASSOS=5000 REPETICOES=5 bash jobs.sh
+
+# Opções de sbatch podem substituir os valores do arquivo:
+bash jobs.sh --partition=intel-512 --cpus-per-task=16
 ```
 
 Antes da campanha final, faça uma submissão pequena para estimar os tempos e
-a memória. Aumente `PASSOS` se as medições forem muito curtas. Para mais pontos
+a memória, por exemplo:
+
+```bash
+TAMANHOS="40 80" THREADS="1 4" PASSOS=100 REPETICOES=1 \
+    bash jobs.sh --cpus-per-task=4 --time=00:05:00
+```
+
+Essa verificação pequena não é a campanha final de desempenho. Aumente
+`PASSOS` se as medições forem muito curtas. Para mais pontos
 fracos além de `p=16`, será necessário incluir também a malha correspondente
 e verificar se existem recursos suficientes na alocação.
 

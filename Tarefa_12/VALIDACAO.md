@@ -3,7 +3,7 @@
 Estas são verificações de desenvolvimento, não resultados de escalabilidade
 do NPAD. Nenhum job foi submetido ao supercomputador nesta etapa.
 
-- Compilação de `v0`, `v1` e `v2` com GCC, OpenMP, `-O2` e também com avisos
+- Compilação inicial de `v0`, `v1` e `v2` com GCC, OpenMP, `-O2` e avisos
   adicionais tratados como erro: sem erros.
 - `validar.py`: 54 execuções curtas; campos completos idênticos entre versões
   e equipes nos três modos, em duas malhas retangulares, com passos pares e
@@ -23,3 +23,11 @@ do NPAD. Nenhum job foi submetido ao supercomputador nesta etapa.
 O conteúdo de `Tarefa_11`, inclusive o relatório final, foi preservado.
 O próximo passo é conferir a alocação e os módulos da conta do NPAD e realizar
 as medições em um nó de computação.
+
+## Adaptação ao ZIP remoto
+
+A configuração passou a usar `-O3`, cinco repetições e `intel-128`, conforme
+o exemplo remoto de CPU da Tarefa 18. A correção das três versões foi novamente
+verificada com `-O3`. O fluxo local de coleta/análise também foi conferido com
+binários separados por campanha. O script `jobs.sh` foi verificado com uma
+substituição local de `sbatch`, sem enviar um job real.
