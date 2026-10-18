@@ -1,0 +1,18 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small,>=Latex,
+  gpu/.style={draw=gray!65,fill=gray!5,text width=2.05cm,minimum height=.85cm,align=center}]
+\node[draw=blue!65!black,fill=blue!5,rounded corners,align=center,
+      text width=3.6cm,minimum height=1.1cm] (p) at (0,0)
+{Um processo\\Uma região \texttt{target}};
+\node[gpu,draw=orange!75!black,fill=orange!18] (a) at (5.7,1.5) {Dispositivo padrão};
+\node[gpu] (b) at (9.2,1.5) {Outro dispositivo};
+\node[gpu] (c) at (5.7,-.3) {Outro dispositivo};
+\node[gpu] (d) at (9.2,-.3) {Outro dispositivo};
+\draw[->,thick] (p.east) -- ++(.6,0) |- (a.west);
+\node[draw=gray!60,dashed,fit=(a)(b)(c)(d),inner sep=8pt,
+      label={[font=\footnotesize]below:Exemplo: quatro GPUs visíveis na alocação}] {};
+\end{tikzpicture}
+\caption{Reservar GPUs e utilizá-las são decisões distintas. Uma única região target, sem divisão explícita entre dispositivos, não distribui automaticamente o vetor por quatro GPUs. O desenho descreve o modelo, condicionado à existência de offload.}
+\label{fig:dispositivos}
+\end{figure}

@@ -1,0 +1,24 @@
+Fonte indicada pelo autor: https://npad.ufrn.br/npad/hardware
+Transcricao relevante fornecida pelo autor em 18/10/2026.
+A pagina nao pode ser recuperada automaticamente nesta preparacao.
+As especificacoes abaixo descrevem classes de nos, nao uma medicao do job.
+
+Nos GPU Tesla V100 / particao gpu-8-v100:
+  2 nos; por no:
+  2 x Intel Xeon E5-2683 v4
+  512 GB DDR4 (memoria do host)
+  8 x NVIDIA Tesla V100-SXM2 de 16 GB (memoria por GPU)
+  SSD local de 1,92 TB
+  InfiniBand ConnectX-4 FDR 56 Gb/s
+
+Nos GPU H200 / particao gpu-4-h200:
+  2 nos; por no:
+  2 x Intel Xeon Gold 6548N
+  1 TB DDR5 (memoria do host)
+  4 x NVIDIA H200 com 141 GB HBM3e (memoria por GPU)
+  4 x SSD NVMe de 1,5 TB em RAID0
+  InfiniBand ConnectX-6 HDR 100 Gb/s
+
+Os logs identificam V100 em gpunode1 e H200 em gpunode4.
+Os modelos de CPU acima nao foram medidos ou impressos por esses jobs.
+O hostname CPU service3 nao foi associado a uma classe de hardware pelos logs.

@@ -1,0 +1,6 @@
+Fontes e resultados: commit e17b7d07f4e0ae1a3f1cdd65e0a8f587638e0bbf
+Disponiveis em main na revisao 9118003, consultada em 18/10/2026.
+Datas e versoes exatas das execucoes: nao registradas em todos os logs.
+Tutorial NPAD consultado: revisao a8ceec45357cd71594f569aed98ed631e9461a8b.
+Inspecao de binarios: leitura estatica local, sem executar as simulacoes.
+Os binarios nao foram recompilados para gerar os dados do relatorio.

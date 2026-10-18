@@ -1,0 +1,20 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small,>=Latex,
+  celula/.style={draw=blue!60!black,fill=blue!5,minimum width=1.75cm,minimum height=.65cm}]
+\foreach \i [count=\k from 0] in {0,1,2,3}{
+  \node[celula] (a\k) at (\k*2.45,2.2) {$a[\i]$};
+  \node[celula] (b\k) at (\k*2.45,1.1) {$b[\i]$};
+  \node[celula,fill=orange!15,draw=orange!70!black] (c\k) at (\k*2.45,-.4) {$c[\i]$};
+  \node (s\k) at (\k*2.45,.35) {$+$};
+  \draw[->] (b\k)--(s\k);
+  \draw[->] (s\k)--(c\k);
+  \draw[->] (a\k.east) -- ++(.28,0) |- (s\k.east);
+}
+\node[anchor=west] at (8.65,1.1) {$\cdots$};
+\node[align=center,text width=12cm] at (3.7,-1.3)
+{Cada índice pode ser calculado independentemente.\\Não há soma acumulada entre posições.};
+\end{tikzpicture}
+\caption{Adição elemento a elemento. A independência entre índices permite distribuir o laço na CPU ou em um dispositivo com offload.}
+\label{fig:vetores}
+\end{figure}

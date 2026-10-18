@@ -1,0 +1,17 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small,>=Latex,
+  caixa/.style={draw=blue!65!black,fill=blue!5,text width=3.5cm,minimum height=2.35cm,align=center}]
+\node[caixa] (h) at (0,0) {\textbf{Host / CPU}\\[4pt]Vetores em \texttt{malloc}\\$a$, $b$, $c$ e referência};
+\node[caixa,fill=orange!12,draw=orange!70!black] (d) at (8,0)
+{\textbf{Dispositivo / GPU}\\[4pt]Dados acessíveis no dispositivo\\$c[i]=a[i]+b[i]$};
+\draw[->,thick] (h.30)--node[above,align=center,font=\footnotesize]
+{Entradas: $a$ e $b$\\80 MB de dados} (d.150);
+\draw[->,thick] (d.210)--node[below,align=center,font=\footnotesize]
+{Saída: $c$\\40 MB de dados} (h.330);
+\node[align=center,text width=12.3cm] at (4,-2.65)
+{\texttt{float}: quatro bytes por elemento; $N=10^7$.\\Copiar o valor de um ponteiro não equivale a copiar seu vetor.};
+\end{tikzpicture}
+\caption{Dados necessários para uma soma em memórias separadas. O desenho explica o mapeamento proposto; não representa transferências medidas nos logs históricos.}
+\label{fig:offload}
+\end{figure}

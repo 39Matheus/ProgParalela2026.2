@@ -1,0 +1,18 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small,>=Latex,
+  fase/.style={draw=gray!70,fill=gray!7,text width=3.25cm,minimum height=1.3cm,align=center}]
+\node[fase] (a) at (0,0) {Alocar e inicializar\\$a$, $b$, $c$ e referência};
+\node[fase,fill=orange!18,draw=orange!75!black] (b) at (4.45,0)
+{\texttt{soma\_cpu}\\ou \texttt{soma\_gpu}};
+\node[fase] (c) at (8.9,0) {Verificar, imprimir\\e liberar memória};
+\draw[->,thick] (a)--(b);
+\draw[->,thick] (b)--(c);
+\node[font=\footnotesize,above=3pt of b] {Intervalo cronometrado};
+\draw[orange!80!black,thick] (2.62,-.85)--(6.28,-.85);
+\node[align=center,text width=12.3cm] at (4.45,-1.7)
+{Em offload com transferência explícita, a chamada inclui envio,\\execução e retorno dos dados. Os logs não separam esses custos.};
+\end{tikzpicture}
+\caption{O tempo impresso mede somente a chamada de soma. Não inclui inicialização nem validação; a região target é síncrona no código apresentado.}
+\label{fig:tempo}
+\end{figure}

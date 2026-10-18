@@ -1,0 +1,12 @@
+*.aux
+*.log
+*.out
+!dados/logs/*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.zip
+!overleaf.zip
+build/
+__pycache__/
