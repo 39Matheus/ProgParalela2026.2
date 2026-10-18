@@ -16,6 +16,8 @@
 \usepackage{amsmath}
 \usepackage{booktabs}
 \usepackage{longtable}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit}
 \usepackage[hidelinks,pdftitle={Tarefa 11: Particionamento de Dados e Balanceamento de Carga com OpenMP},pdfauthor={Matheus Bezeril Pinto}]{hyperref}
 
 \geometry{a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm}
@@ -48,6 +50,7 @@
     {É}{{\'E}}1 {Ê}{{\^E}}1 {Í}{{\'I}}1
     {Ó}{{\'O}}1 {Ô}{{\^O}}1 {Õ}{{\~O}}1
     {Ú}{{\'U}}1 {Ç}{{\c{C}}}1
+    {−}{{\ensuremath{-}}}1 {×}{{\ensuremath{\times}}}1
 }
 \lstdefinestyle{CStyle}{
     style=Base,language=C,
@@ -64,6 +67,20 @@
     commentstyle=\color{gray!30},
     numberstyle=\tiny\color{black},
     backgroundcolor=\color{shellBG}
+}
+
+
+\lstdefinestyle{Apendice}{
+    style=CStyle,
+    basicstyle=\fontsize{8.5}{10}\selectfont\ttfamily,
+    numberstyle=\tiny,numbersep=7pt,
+    backgroundcolor=\color{gray!4},
+    xleftmargin=1em,framexleftmargin=.3em
+}
+\lstdefinestyle{Dados}{
+    style=Apendice,language={},
+    keywordstyle={},commentstyle={},stringstyle={},
+    numbers=none,backgroundcolor=\color{white}
 }
 
 \title{\textbf{Tarefa 11: Particionamento de Dados e Balanceamento de Carga com OpenMP}}
@@ -131,6 +148,8 @@ Consequentemente, $r_x+r_y\leq 2\alpha=0{,}40$, atendendo à condição inclusiv
 
 As condições de contorno são periódicas: o vizinho anterior ao índice zero é o último índice da dimensão, e o vizinho após o último índice é zero. O domínio não possui paredes nem uma fronteira de saída.
 
+\input{diagramas/estencil.tex}
+
 \subsection{Condições iniciais}
 Os três modos de inicialização são:
 \begin{enumerate}
@@ -192,6 +211,8 @@ A cláusula \texttt{schedule(runtime)} seleciona a política em tempo de execuç
 O trabalho por célula é essencialmente uniforme. Não há regiões em que uma célula execute um algoritmo mais caro que outra. Portanto, a distribuição dinâmica pode introduzir custo sem necessariamente corrigir um desequilíbrio relevante.
 
 É importante interpretar a unidade do bloco: oito iterações significam oito linhas na versão normal, mas somente oito células na versão com \texttt{collapse(2)}.
+
+\input{diagramas/particionamento.tex}
 
 \subsection{Medição e modo de desempenho}
 A função \texttt{run\_simulation} acumula o tempo apenas do cálculo e da troca dos campos:
@@ -407,7 +428,7 @@ O aumento da carga permitiu obter tempos de segundos e observar aceleração mai
 
 O principal aprendizado é que a escolha do schedule depende também da unidade de trabalho. O mesmo tamanho de bloco, oito, passou a significar oito células em vez de oito linhas com o uso de \texttt{collapse(2)}, aumentando muito o custo de distribuição dinâmica. Para este problema e esta quantidade de threads, paralelizar somente o laço externo foi suficiente.
 
-As conclusões se restringem ao hardware, à carga e às amostras apresentados. Como continuidade, seria possível ampliar o número de repetições, controlar a afinidade das threads e variar o tamanho dos blocos dinâmicos, mantendo a mesma referência e a mesma carga.
+As conclusões se restringem ao hardware, à carga e às amostras apresentados. Como continuidade, seria possível ampliar o número de repetições e variar o tamanho dos blocos dinâmicos, mantendo a mesma referência e a mesma carga.
 
 \appendix
 \section{Reprodução das execuções}
@@ -438,13 +459,63 @@ OMP_DYNAMIC=FALSE OMP_NUM_THREADS=4 OMP_SCHEDULE=guided,8 \
     ./fluid_collapse 2 --benchmark
 \end{lstlisting}
 
-\section{Arquivos que acompanham o relatório}
-O projeto LaTeX é independente da posição do restante do repositório. A pasta \texttt{dados/} contém cópias dos três arquivos de desempenho, metadados da visualização, os campos inicial e final, a série de diagnósticos dos 101 frames e as estatísticas derivadas.
+\section{Material integral nos apêndices}
+O PDF é o documento de entrega. Por isso, os apêndices seguintes incorporam os fontes completos, os dados de desempenho, os diagnósticos e os metadados utilizados. Os arquivos são inseridos por \texttt{\textbackslash lstinputlisting}, sem copiar manualmente cada linha para o texto LaTeX.
 
-A pasta \texttt{codigos/} contém cópias dos cinco fontes analisados. Elas documentam a revisão usada neste relatório e não substituem os fontes principais da tarefa. A função \texttt{compute\_next\_state}, em \texttt{fluid.c}, concentra o cálculo paralelo; \texttt{run\_simulation} delimita a medição, e \texttt{executar\_testes.sh} define a comparação.
+As cópias de \texttt{codigos/} registram a revisão analisada. A referência sequencial de \texttt{Old/} também está incluída. O script que gerou as figuras e tabelas aparece integralmente. As representações dos campos inicial e final estão no corpo do relatório; a evolução das medidas nos 101 frames está tabulada adiante.
 
-O arquivo \texttt{gerar\_figuras.py} recalcula os gráficos e a tabela a partir dos dados incluídos, sem executar uma nova simulação. As figuras e a tabela já estão prontas, de modo que a compilação do \texttt{main.tex} não exige Python, acesso à rede ou autorização de \textit{shell escape}.
+\clearpage
+\section{Fontes completos da implementação}
+\label{ap:fontes}
+\subsection{\texttt{fluid.h}}
+\lstinputlisting[style=Apendice,language=C]{codigos/fluid.h}
+\clearpage
+\subsection{\texttt{fluid\_sim.c}}
+\lstinputlisting[style=Apendice,language=C]{codigos/fluid_sim.c}
+\clearpage
+\subsection{\texttt{fluid.c}}
+\lstinputlisting[style=Apendice,language=C]{codigos/fluid.c}
+\clearpage
+\subsection{\texttt{executar\_testes.sh}}
+\lstinputlisting[style=Apendice,language=bash]{codigos/executar_testes.sh}
+\clearpage
+\subsection{\texttt{visualize\_fluid.py}}
+\lstinputlisting[style=Apendice,language=Python]{codigos/visualize_fluid.py}
 
+\clearpage
+\section{Fontes completos da referência sequencial}
+\subsection{\texttt{Old/fluid.h}}
+\lstinputlisting[style=Apendice,language=C]{codigos/Old/fluid.h}
+\clearpage
+\subsection{\texttt{Old/fluid\_sim.c}}
+\lstinputlisting[style=Apendice,language=C]{codigos/Old/fluid_sim.c}
+\clearpage
+\subsection{\texttt{Old/fluid.c}}
+\lstinputlisting[style=Apendice,language=C]{codigos/Old/fluid.c}
+\clearpage
+\subsection{\texttt{Old/visualize\_fluid.py}}
+\lstinputlisting[style=Apendice,language=Python]{codigos/Old/visualize_fluid.py}
+
+\clearpage
+\section{Dados brutos de desempenho e metadados}
+As 54 medições abaixo correspondem à carga maior descrita na metodologia. Elas são independentes dos 101 frames da execução visual. As médias, os desvios e os speedups já estão apresentados no corpo do relatório.
+\input{tabelas/tempos_brutos.tex}
+\subsection{Configuração dos testes}
+\lstinputlisting[style=Dados]{dados/configuracao.txt}
+\subsection{Metadados da execução visual}
+\lstinputlisting[style=Dados]{dados/metadata_visualizacao.txt}
+
+\clearpage
+\section{Série completa dos diagnósticos}
+A tabela contém uma linha por frame salvo. A variância é calculada em relação à média do próprio campo. A componente $v$ permaneceu nula em todos os frames; o erro máximo de conservação da média foi inferior a $4\times10^{-14}$.
+\input{tabelas/validacao_completa.tex}
+
+\clearpage
+\section{Código completo da geração de figuras e tabelas}
+O script a seguir trabalha sobre os dados já coletados; não executa uma nova simulação nem produz novas medições de desempenho.
+\lstinputlisting[style=Apendice,language=Python]{gerar_figuras.py}
+
+\clearpage
 \begin{thebibliography}{9}
 \bibitem{openmp}
 OPENMP ARCHITECTURE REVIEW BOARD.

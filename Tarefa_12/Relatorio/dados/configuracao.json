@@ -1,0 +1,26 @@
+{
+  "passos": 2000,
+  "modo": 2,
+  "repeticoes": 5,
+  "aquecimentos": 1,
+  "tamanhos": [
+    200,
+    400,
+    800
+  ],
+  "threads": [
+    1,
+    2,
+    4,
+    8,
+    16
+  ],
+  "versoes": [
+    "v0",
+    "v1",
+    "v2"
+  ],
+  "schedule": "static",
+  "otimizacao": "-O3",
+  "ambiente": "slurm"
+}

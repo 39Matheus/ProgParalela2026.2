@@ -128,3 +128,27 @@ with (DATA / "estatisticas.csv").open("w", encoding="utf-8", newline="") as file
     for key, values in stats.items():
         writer.writerow((*key, *values))
 print("Figuras, tabela e estatísticas atualizadas a partir dos CSVs incluídos.")
+
+# Registros completos para que os apêndices possam ser lidos somente no PDF.
+def longtable(filename, columns, heading, caption, rows):
+    content = [r"\begin{longtable}{" + columns + "}",
+               r"\caption{" + caption + r"}\\", r"\toprule " + heading + r"\\",
+               r"\midrule\endfirsthead", r"\toprule " + heading + r"\\",
+               r"\midrule\endhead", r"\bottomrule\endfoot"]
+    content.extend(" & ".join(row) + r"\\" for row in rows)
+    content.append(r"\end{longtable}")
+    (TABLE / filename).write_text("\n".join(content) + "\n", encoding="utf-8")
+
+longtable("tempos_brutos.tex", "llrrr",
+          r"Versão & Schedule & Threads & Repetição & Tempo (s)",
+          "Todas as 54 medições, sem exclusão de amostras.",
+          [[row["versao"], row["schedule"], row["threads"], row["repeticao"],
+            pt(float(row["tempo_segundos"]), 6)] for row in read_csv("tempos.csv")])
+longtable("validacao_completa.tex", "rrrrr",
+          r"Passo & $t$ & Máximo & RMS & Variância de $u$",
+          "Série completa dos 101 estados salvos no modo 2. "
+          "A média de $u$ se conserva em aproximadamente $1{,}020106192967$ "
+          "e a componente $v$ é nula em todos os estados.",
+          [[row["passo"], pt(float(row["tempo_fisico"]), 5),
+            pt(float(row["max_pert"]), 8), pt(float(row["rms_pert"]), 8),
+            pt(float(row["variancia_u"]), 10)] for row in validation])

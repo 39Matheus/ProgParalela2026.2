@@ -8,6 +8,12 @@ O conteúdo descreve os fontes e os resultados da revisão `5192499`, incluindo
 os 54 tempos de execução. O hardware é o mesmo informado no apêndice da Tarefa
 10, conforme confirmação do autor; o GCC informado é o 13.3.0 do Ubuntu.
 
+O PDF agora inclui diagramas TikZ e apêndices com os fontes **completos** da
+implementação e de `Old/`, incluindo os dois visualizadores, além do gerador
+de figuras. Os códigos são inseridos por `\lstinputlisting`, sem limites de
+linhas. Também contém as 54 medições brutas, os 101 diagnósticos e os metadados.
+Assim, o professor pode consultar o material apenas pelo PDF entregue.
+
 ## Overleaf: caminho mais simples
 
 1. Baixe `overleaf.zip` pelo botão de download do arquivo no GitHub.
@@ -16,7 +22,7 @@ os 54 tempos de execução. O hardware é o mesmo informado no apêndice da Tare
 4. Compile normalmente. Não é necessário instalar Python, rodar scripts ou
    habilitar `shell escape` para compilar o relatório.
 
-Os arquivos `figuras/*.pdf` e `tabelas/resultados.tex` já estão prontos.
+Os arquivos `figuras/*.pdf` e `tabelas/*.tex` já estão prontos.
 Preserve esses diretórios ao importar o projeto.
 
 ## VS Code no Ubuntu
@@ -26,7 +32,7 @@ Instale os pacotes LaTeX uma vez:
 ```bash
 sudo apt update
 sudo apt install latexmk texlive-latex-base texlive-latex-recommended \
-  texlive-latex-extra texlive-lang-portuguese lmodern
+  texlive-latex-extra texlive-pictures texlive-lang-portuguese lmodern
 ```
 
 Instale a extensão **LaTeX Workshop**, de James Yu, e abra **esta pasta**
@@ -78,9 +84,10 @@ Documentação oficial:
 - `dados/metadata_visualizacao.txt`: parâmetros da execução visual.
 - `dados/estatisticas.csv`: médias, desvios padrão amostrais, speedups sobre a
   referência comum e coeficientes de variação derivados dos tempos brutos.
-- `codigos/`: cópias dos cinco fontes da revisão analisada. Não substituem os
-  fontes principais, na pasta superior.
-- `gerar_figuras.py`: gera as quatro figuras e a tabela, sem executar testes
+- `codigos/`: cópias dos cinco fontes da revisão analisada e dos quatro arquivos
+  da referência `Old/`. Não substituem os fontes principais, na pasta superior.
+- `diagramas/`: ilustrações TikZ do estêncil e do particionamento dos laços.
+- `gerar_figuras.py`: gera as quatro figuras e as tabelas, sem executar testes
   nem simulações. Requer NumPy e Matplotlib somente se for executado de novo.
 
 Para regenerar as figuras após atualizar os dados, use um ambiente Python com
