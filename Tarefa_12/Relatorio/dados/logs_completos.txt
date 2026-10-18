@@ -1,0 +1,1619 @@
+=== v0_n200_p1_aquecimento.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987770897 segundos
+RESULTADO;v0;200;200;2000;2;1;1;0.987770897;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p1_r1.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.988237385 segundos
+RESULTADO;v0;200;200;2000;2;1;1;0.988237385;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p1_r2.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.991919691 segundos
+RESULTADO;v0;200;200;2000;2;1;1;0.991919691;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p1_r3.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.989548320 segundos
+RESULTADO;v0;200;200;2000;2;1;1;0.989548320;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p1_r4.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987618714 segundos
+RESULTADO;v0;200;200;2000;2;1;1;0.987618714;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p1_r5.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.991148747 segundos
+RESULTADO;v0;200;200;2000;2;1;1;0.991148747;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p2_aquecimento.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.518203170 segundos
+RESULTADO;v0;200;200;2000;2;2;2;0.518203170;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p2_r1.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.517510673 segundos
+RESULTADO;v0;200;200;2000;2;2;2;0.517510673;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p2_r2.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.515609445 segundos
+RESULTADO;v0;200;200;2000;2;2;2;0.515609445;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p2_r3.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.519059506 segundos
+RESULTADO;v0;200;200;2000;2;2;2;0.519059506;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p2_r4.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.519359294 segundos
+RESULTADO;v0;200;200;2000;2;2;2;0.519359294;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p2_r5.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.516822504 segundos
+RESULTADO;v0;200;200;2000;2;2;2;0.516822504;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p4_aquecimento.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.284605463 segundos
+RESULTADO;v0;200;200;2000;2;4;4;0.284605463;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p4_r1.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283218772 segundos
+RESULTADO;v0;200;200;2000;2;4;4;0.283218772;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p4_r2.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.282169523 segundos
+RESULTADO;v0;200;200;2000;2;4;4;0.282169523;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p4_r3.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.282725846 segundos
+RESULTADO;v0;200;200;2000;2;4;4;0.282725846;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p4_r4.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283046210 segundos
+RESULTADO;v0;200;200;2000;2;4;4;0.283046210;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p4_r5.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.282614169 segundos
+RESULTADO;v0;200;200;2000;2;4;4;0.282614169;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p8_aquecimento.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.160102345 segundos
+RESULTADO;v0;200;200;2000;2;8;8;0.160102345;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p8_r1.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.160689914 segundos
+RESULTADO;v0;200;200;2000;2;8;8;0.160689914;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p8_r2.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.166648897 segundos
+RESULTADO;v0;200;200;2000;2;8;8;0.166648897;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p8_r3.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.166471193 segundos
+RESULTADO;v0;200;200;2000;2;8;8;0.166471193;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p8_r4.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.166270045 segundos
+RESULTADO;v0;200;200;2000;2;8;8;0.166270045;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p8_r5.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.161509378 segundos
+RESULTADO;v0;200;200;2000;2;8;8;0.161509378;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p16_aquecimento.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.170236622 segundos
+RESULTADO;v0;200;200;2000;2;16;16;0.170236622;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p16_r1.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169879672 segundos
+RESULTADO;v0;200;200;2000;2;16;16;0.169879672;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p16_r2.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169648824 segundos
+RESULTADO;v0;200;200;2000;2;16;16;0.169648824;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p16_r3.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169500269 segundos
+RESULTADO;v0;200;200;2000;2;16;16;0.169500269;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p16_r4.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.170197224 segundos
+RESULTADO;v0;200;200;2000;2;16;16;0.170197224;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n200_p16_r5.log ===
+v0 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169704150 segundos
+RESULTADO;v0;200;200;2000;2;16;16;0.169704150;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v0_n400_p1_aquecimento.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.953964543 segundos
+RESULTADO;v0;400;400;2000;2;1;1;3.953964543;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p1_r1.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.946090593 segundos
+RESULTADO;v0;400;400;2000;2;1;1;3.946090593;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p1_r2.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.941107012 segundos
+RESULTADO;v0;400;400;2000;2;1;1;3.941107012;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p1_r3.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.951529498 segundos
+RESULTADO;v0;400;400;2000;2;1;1;3.951529498;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p1_r4.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.947307830 segundos
+RESULTADO;v0;400;400;2000;2;1;1;3.947307830;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p1_r5.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.947262302 segundos
+RESULTADO;v0;400;400;2000;2;1;1;3.947262302;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p2_aquecimento.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.058090239 segundos
+RESULTADO;v0;400;400;2000;2;2;2;2.058090239;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p2_r1.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.062723170 segundos
+RESULTADO;v0;400;400;2000;2;2;2;2.062723170;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p2_r2.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.056014324 segundos
+RESULTADO;v0;400;400;2000;2;2;2;2.056014324;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p2_r3.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.053744676 segundos
+RESULTADO;v0;400;400;2000;2;2;2;2.053744676;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p2_r4.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.029799482 segundos
+RESULTADO;v0;400;400;2000;2;2;2;2.029799482;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p2_r5.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.053533921 segundos
+RESULTADO;v0;400;400;2000;2;2;2;2.053533921;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p4_aquecimento.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.116952859 segundos
+RESULTADO;v0;400;400;2000;2;4;4;1.116952859;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p4_r1.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.118896904 segundos
+RESULTADO;v0;400;400;2000;2;4;4;1.118896904;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p4_r2.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.112047909 segundos
+RESULTADO;v0;400;400;2000;2;4;4;1.112047909;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p4_r3.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.115945721 segundos
+RESULTADO;v0;400;400;2000;2;4;4;1.115945721;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p4_r4.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.118316027 segundos
+RESULTADO;v0;400;400;2000;2;4;4;1.118316027;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p4_r5.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.118926892 segundos
+RESULTADO;v0;400;400;2000;2;4;4;1.118926892;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p8_aquecimento.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.623587688 segundos
+RESULTADO;v0;400;400;2000;2;8;8;0.623587688;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p8_r1.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.640021780 segundos
+RESULTADO;v0;400;400;2000;2;8;8;0.640021780;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p8_r2.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.639800827 segundos
+RESULTADO;v0;400;400;2000;2;8;8;0.639800827;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p8_r3.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.639180308 segundos
+RESULTADO;v0;400;400;2000;2;8;8;0.639180308;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p8_r4.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.623291816 segundos
+RESULTADO;v0;400;400;2000;2;8;8;0.623291816;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p8_r5.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.638918752 segundos
+RESULTADO;v0;400;400;2000;2;8;8;0.638918752;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p16_aquecimento.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.641991565 segundos
+RESULTADO;v0;400;400;2000;2;16;16;0.641991565;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p16_r1.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642161505 segundos
+RESULTADO;v0;400;400;2000;2;16;16;0.642161505;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p16_r2.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642540783 segundos
+RESULTADO;v0;400;400;2000;2;16;16;0.642540783;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p16_r3.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642314506 segundos
+RESULTADO;v0;400;400;2000;2;16;16;0.642314506;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p16_r4.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642304051 segundos
+RESULTADO;v0;400;400;2000;2;16;16;0.642304051;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n400_p16_r5.log ===
+v0 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642043982 segundos
+RESULTADO;v0;400;400;2000;2;16;16;0.642043982;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v0_n800_p1_aquecimento.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 15.762385592 segundos
+RESULTADO;v0;800;800;2000;2;1;1;15.762385592;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p1_r1.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 15.735432182 segundos
+RESULTADO;v0;800;800;2000;2;1;1;15.735432182;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p1_r2.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.452500391 segundos
+RESULTADO;v0;800;800;2000;2;1;1;16.452500391;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p1_r3.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.409494682 segundos
+RESULTADO;v0;800;800;2000;2;1;1;16.409494682;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p1_r4.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.430489390 segundos
+RESULTADO;v0;800;800;2000;2;1;1;16.430489390;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p1_r5.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.406587589 segundos
+RESULTADO;v0;800;800;2000;2;1;1;16.406587589;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p2_aquecimento.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.624246887 segundos
+RESULTADO;v0;800;800;2000;2;2;2;8.624246887;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p2_r1.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.755747488 segundos
+RESULTADO;v0;800;800;2000;2;2;2;8.755747488;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p2_r2.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.717853219 segundos
+RESULTADO;v0;800;800;2000;2;2;2;8.717853219;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p2_r3.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.810764342 segundos
+RESULTADO;v0;800;800;2000;2;2;2;8.810764342;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p2_r4.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.020081763 segundos
+RESULTADO;v0;800;800;2000;2;2;2;8.020081763;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p2_r5.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.174685583 segundos
+RESULTADO;v0;800;800;2000;2;2;2;8.174685583;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p4_aquecimento.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.445507865 segundos
+RESULTADO;v0;800;800;2000;2;4;4;4.445507865;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p4_r1.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.441686492 segundos
+RESULTADO;v0;800;800;2000;2;4;4;4.441686492;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p4_r2.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.444689468 segundos
+RESULTADO;v0;800;800;2000;2;4;4;4.444689468;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p4_r3.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.436907361 segundos
+RESULTADO;v0;800;800;2000;2;4;4;4.436907361;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p4_r4.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.334386558 segundos
+RESULTADO;v0;800;800;2000;2;4;4;4.334386558;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p4_r5.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.443157811 segundos
+RESULTADO;v0;800;800;2000;2;4;4;4.443157811;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p8_aquecimento.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.458550589 segundos
+RESULTADO;v0;800;800;2000;2;8;8;2.458550589;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p8_r1.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.462297584 segundos
+RESULTADO;v0;800;800;2000;2;8;8;2.462297584;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p8_r2.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.459274296 segundos
+RESULTADO;v0;800;800;2000;2;8;8;2.459274296;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p8_r3.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.460770031 segundos
+RESULTADO;v0;800;800;2000;2;8;8;2.460770031;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p8_r4.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.457443715 segundos
+RESULTADO;v0;800;800;2000;2;8;8;2.457443715;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p8_r5.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.460654354 segundos
+RESULTADO;v0;800;800;2000;2;8;8;2.460654354;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p16_aquecimento.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.544741821 segundos
+RESULTADO;v0;800;800;2000;2;16;16;2.544741821;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p16_r1.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.545985636 segundos
+RESULTADO;v0;800;800;2000;2;16;16;2.545985636;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p16_r2.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.544637890 segundos
+RESULTADO;v0;800;800;2000;2;16;16;2.544637890;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p16_r3.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.545714494 segundos
+RESULTADO;v0;800;800;2000;2;16;16;2.545714494;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p16_r4.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.545328859 segundos
+RESULTADO;v0;800;800;2000;2;16;16;2.545328859;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v0_n800_p16_r5.log ===
+v0 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.545282511 segundos
+RESULTADO;v0;800;800;2000;2;16;16;2.545282511;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n200_p1_aquecimento.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.994002571 segundos
+RESULTADO;v1;200;200;2000;2;1;1;0.994002571;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p1_r1.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.989519844 segundos
+RESULTADO;v1;200;200;2000;2;1;1;0.989519844;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p1_r2.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.990796748 segundos
+RESULTADO;v1;200;200;2000;2;1;1;0.990796748;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p1_r3.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.988234082 segundos
+RESULTADO;v1;200;200;2000;2;1;1;0.988234082;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p1_r4.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.992104491 segundos
+RESULTADO;v1;200;200;2000;2;1;1;0.992104491;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p1_r5.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.988713038 segundos
+RESULTADO;v1;200;200;2000;2;1;1;0.988713038;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p2_aquecimento.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.517178284 segundos
+RESULTADO;v1;200;200;2000;2;2;2;0.517178284;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p2_r1.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.517397079 segundos
+RESULTADO;v1;200;200;2000;2;2;2;0.517397079;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p2_r2.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.514779417 segundos
+RESULTADO;v1;200;200;2000;2;2;2;0.514779417;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p2_r3.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.516705073 segundos
+RESULTADO;v1;200;200;2000;2;2;2;0.516705073;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p2_r4.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.515187155 segundos
+RESULTADO;v1;200;200;2000;2;2;2;0.515187155;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p2_r5.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.517918242 segundos
+RESULTADO;v1;200;200;2000;2;2;2;0.517918242;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p4_aquecimento.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.281682040 segundos
+RESULTADO;v1;200;200;2000;2;4;4;0.281682040;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p4_r1.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283677348 segundos
+RESULTADO;v1;200;200;2000;2;4;4;0.283677348;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p4_r2.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.281626988 segundos
+RESULTADO;v1;200;200;2000;2;4;4;0.281626988;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p4_r3.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283050389 segundos
+RESULTADO;v1;200;200;2000;2;4;4;0.283050389;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p4_r4.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.282061951 segundos
+RESULTADO;v1;200;200;2000;2;4;4;0.282061951;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p4_r5.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283127690 segundos
+RESULTADO;v1;200;200;2000;2;4;4;0.283127690;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p8_aquecimento.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.159728653 segundos
+RESULTADO;v1;200;200;2000;2;8;8;0.159728653;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p8_r1.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.161652876 segundos
+RESULTADO;v1;200;200;2000;2;8;8;0.161652876;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p8_r2.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.161337978 segundos
+RESULTADO;v1;200;200;2000;2;8;8;0.161337978;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p8_r3.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.160368600 segundos
+RESULTADO;v1;200;200;2000;2;8;8;0.160368600;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p8_r4.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.164490620 segundos
+RESULTADO;v1;200;200;2000;2;8;8;0.164490620;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p8_r5.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.165722785 segundos
+RESULTADO;v1;200;200;2000;2;8;8;0.165722785;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p16_aquecimento.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169372629 segundos
+RESULTADO;v1;200;200;2000;2;16;16;0.169372629;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p16_r1.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169425345 segundos
+RESULTADO;v1;200;200;2000;2;16;16;0.169425345;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p16_r2.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169012660 segundos
+RESULTADO;v1;200;200;2000;2;16;16;0.169012660;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p16_r3.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169629532 segundos
+RESULTADO;v1;200;200;2000;2;16;16;0.169629532;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p16_r4.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169734731 segundos
+RESULTADO;v1;200;200;2000;2;16;16;0.169734731;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n200_p16_r5.log ===
+v1 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.169018741 segundos
+RESULTADO;v1;200;200;2000;2;16;16;0.169018741;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v1_n400_p1_aquecimento.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.940913991 segundos
+RESULTADO;v1;400;400;2000;2;1;1;3.940913991;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p1_r1.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.944221254 segundos
+RESULTADO;v1;400;400;2000;2;1;1;3.944221254;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p1_r2.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.935563313 segundos
+RESULTADO;v1;400;400;2000;2;1;1;3.935563313;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p1_r3.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.938295421 segundos
+RESULTADO;v1;400;400;2000;2;1;1;3.938295421;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p1_r4.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.948334946 segundos
+RESULTADO;v1;400;400;2000;2;1;1;3.948334946;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p1_r5.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.940770744 segundos
+RESULTADO;v1;400;400;2000;2;1;1;3.940770744;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p2_aquecimento.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.054409367 segundos
+RESULTADO;v1;400;400;2000;2;2;2;2.054409367;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p2_r1.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.051784810 segundos
+RESULTADO;v1;400;400;2000;2;2;2;2.051784810;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p2_r2.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.052059879 segundos
+RESULTADO;v1;400;400;2000;2;2;2;2.052059879;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p2_r3.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.051919597 segundos
+RESULTADO;v1;400;400;2000;2;2;2;2.051919597;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p2_r4.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.050319387 segundos
+RESULTADO;v1;400;400;2000;2;2;2;2.050319387;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p2_r5.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.053168145 segundos
+RESULTADO;v1;400;400;2000;2;2;2;2.053168145;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p4_aquecimento.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.114938513 segundos
+RESULTADO;v1;400;400;2000;2;4;4;1.114938513;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p4_r1.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.116047558 segundos
+RESULTADO;v1;400;400;2000;2;4;4;1.116047558;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p4_r2.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.115221323 segundos
+RESULTADO;v1;400;400;2000;2;4;4;1.115221323;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p4_r3.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.115071289 segundos
+RESULTADO;v1;400;400;2000;2;4;4;1.115071289;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p4_r4.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.115285301 segundos
+RESULTADO;v1;400;400;2000;2;4;4;1.115285301;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p4_r5.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.112196011 segundos
+RESULTADO;v1;400;400;2000;2;4;4;1.112196011;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p8_aquecimento.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.619691117 segundos
+RESULTADO;v1;400;400;2000;2;8;8;0.619691117;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p8_r1.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.622362110 segundos
+RESULTADO;v1;400;400;2000;2;8;8;0.622362110;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p8_r2.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.639900226 segundos
+RESULTADO;v1;400;400;2000;2;8;8;0.639900226;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p8_r3.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.638100997 segundos
+RESULTADO;v1;400;400;2000;2;8;8;0.638100997;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p8_r4.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.639077245 segundos
+RESULTADO;v1;400;400;2000;2;8;8;0.639077245;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p8_r5.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.620963956 segundos
+RESULTADO;v1;400;400;2000;2;8;8;0.620963956;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p16_aquecimento.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643042593 segundos
+RESULTADO;v1;400;400;2000;2;16;16;0.643042593;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p16_r1.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643029157 segundos
+RESULTADO;v1;400;400;2000;2;16;16;0.643029157;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p16_r2.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643007994 segundos
+RESULTADO;v1;400;400;2000;2;16;16;0.643007994;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p16_r3.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642953015 segundos
+RESULTADO;v1;400;400;2000;2;16;16;0.642953015;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p16_r4.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642302615 segundos
+RESULTADO;v1;400;400;2000;2;16;16;0.642302615;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n400_p16_r5.log ===
+v1 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642960786 segundos
+RESULTADO;v1;400;400;2000;2;16;16;0.642960786;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v1_n800_p1_aquecimento.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 15.734849319 segundos
+RESULTADO;v1;800;800;2000;2;1;1;15.734849319;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p1_r1.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 15.716424741 segundos
+RESULTADO;v1;800;800;2000;2;1;1;15.716424741;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p1_r2.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.383570787 segundos
+RESULTADO;v1;800;800;2000;2;1;1;16.383570787;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p1_r3.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.387068291 segundos
+RESULTADO;v1;800;800;2000;2;1;1;16.387068291;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p1_r4.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.408936279 segundos
+RESULTADO;v1;800;800;2000;2;1;1;16.408936279;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p1_r5.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.353779870 segundos
+RESULTADO;v1;800;800;2000;2;1;1;16.353779870;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p2_aquecimento.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.592011606 segundos
+RESULTADO;v1;800;800;2000;2;2;2;8.592011606;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p2_r1.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.798799768 segundos
+RESULTADO;v1;800;800;2000;2;2;2;8.798799768;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p2_r2.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.592910875 segundos
+RESULTADO;v1;800;800;2000;2;2;2;8.592910875;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p2_r3.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.174746562 segundos
+RESULTADO;v1;800;800;2000;2;2;2;8.174746562;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p2_r4.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.167678816 segundos
+RESULTADO;v1;800;800;2000;2;2;2;8.167678816;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p2_r5.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.174141803 segundos
+RESULTADO;v1;800;800;2000;2;2;2;8.174141803;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p4_aquecimento.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.433701978 segundos
+RESULTADO;v1;800;800;2000;2;4;4;4.433701978;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p4_r1.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.430973788 segundos
+RESULTADO;v1;800;800;2000;2;4;4;4.430973788;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p4_r2.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.432122033 segundos
+RESULTADO;v1;800;800;2000;2;4;4;4.432122033;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p4_r3.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.437247809 segundos
+RESULTADO;v1;800;800;2000;2;4;4;4.437247809;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p4_r4.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.441208121 segundos
+RESULTADO;v1;800;800;2000;2;4;4;4.441208121;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p4_r5.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.431754431 segundos
+RESULTADO;v1;800;800;2000;2;4;4;4.431754431;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p8_aquecimento.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.455067194 segundos
+RESULTADO;v1;800;800;2000;2;8;8;2.455067194;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p8_r1.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.455922424 segundos
+RESULTADO;v1;800;800;2000;2;8;8;2.455922424;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p8_r2.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.451179712 segundos
+RESULTADO;v1;800;800;2000;2;8;8;2.451179712;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p8_r3.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.454687717 segundos
+RESULTADO;v1;800;800;2000;2;8;8;2.454687717;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p8_r4.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.486010616 segundos
+RESULTADO;v1;800;800;2000;2;8;8;2.486010616;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p8_r5.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.503994417 segundos
+RESULTADO;v1;800;800;2000;2;8;8;2.503994417;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p16_aquecimento.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.553900177 segundos
+RESULTADO;v1;800;800;2000;2;16;16;2.553900177;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p16_r1.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.553747583 segundos
+RESULTADO;v1;800;800;2000;2;16;16;2.553747583;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p16_r2.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.554531291 segundos
+RESULTADO;v1;800;800;2000;2;16;16;2.554531291;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p16_r3.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.551659553 segundos
+RESULTADO;v1;800;800;2000;2;16;16;2.551659553;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p16_r4.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.550599697 segundos
+RESULTADO;v1;800;800;2000;2;16;16;2.550599697;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v1_n800_p16_r5.log ===
+v1 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.555311380 segundos
+RESULTADO;v1;800;800;2000;2;16;16;2.555311380;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n200_p1_aquecimento.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987158589 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.987158589;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p1_r1.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987213009 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.987213009;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p1_r2.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.989865568 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.989865568;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p1_r3.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.989018905 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.989018905;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p1_r4.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987790643 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.987790643;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p1_r5.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987380994 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.987380994;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p2_aquecimento.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.513913744 segundos
+RESULTADO;v2;200;200;2000;2;2;2;0.513913744;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p2_r1.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.516602806 segundos
+RESULTADO;v2;200;200;2000;2;2;2;0.516602806;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p2_r2.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.515101864 segundos
+RESULTADO;v2;200;200;2000;2;2;2;0.515101864;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p2_r3.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.515584800 segundos
+RESULTADO;v2;200;200;2000;2;2;2;0.515584800;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p2_r4.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.516641744 segundos
+RESULTADO;v2;200;200;2000;2;2;2;0.516641744;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p2_r5.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=2
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.514910795 segundos
+RESULTADO;v2;200;200;2000;2;2;2;0.514910795;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p4_aquecimento.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.274941205 segundos
+RESULTADO;v2;200;200;2000;2;4;4;0.274941205;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p4_r1.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.280870565 segundos
+RESULTADO;v2;200;200;2000;2;4;4;0.280870565;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p4_r2.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.284460132 segundos
+RESULTADO;v2;200;200;2000;2;4;4;0.284460132;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p4_r3.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.284384020 segundos
+RESULTADO;v2;200;200;2000;2;4;4;0.284384020;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p4_r4.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283508308 segundos
+RESULTADO;v2;200;200;2000;2;4;4;0.283508308;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p4_r5.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=4
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.283533098 segundos
+RESULTADO;v2;200;200;2000;2;4;4;0.283533098;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p8_aquecimento.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.161530586 segundos
+RESULTADO;v2;200;200;2000;2;8;8;0.161530586;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p8_r1.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.161002002 segundos
+RESULTADO;v2;200;200;2000;2;8;8;0.161002002;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p8_r2.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.165451466 segundos
+RESULTADO;v2;200;200;2000;2;8;8;0.165451466;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p8_r3.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.165155090 segundos
+RESULTADO;v2;200;200;2000;2;8;8;0.165155090;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p8_r4.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.159289646 segundos
+RESULTADO;v2;200;200;2000;2;8;8;0.159289646;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p8_r5.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=8
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.160344590 segundos
+RESULTADO;v2;200;200;2000;2;8;8;0.160344590;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p16_aquecimento.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.167911698 segundos
+RESULTADO;v2;200;200;2000;2;16;16;0.167911698;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p16_r1.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.167819650 segundos
+RESULTADO;v2;200;200;2000;2;16;16;0.167819650;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p16_r2.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.167696514 segundos
+RESULTADO;v2;200;200;2000;2;16;16;0.167696514;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p16_r3.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.168097944 segundos
+RESULTADO;v2;200;200;2000;2;16;16;0.168097944;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p16_r4.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.167860966 segundos
+RESULTADO;v2;200;200;2000;2;16;16;0.167860966;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n200_p16_r5.log ===
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=16
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.168267331 segundos
+RESULTADO;v2;200;200;2000;2;16;16;0.168267331;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
+
+=== v2_n400_p1_aquecimento.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.939776512 segundos
+RESULTADO;v2;400;400;2000;2;1;1;3.939776512;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p1_r1.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.938307853 segundos
+RESULTADO;v2;400;400;2000;2;1;1;3.938307853;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p1_r2.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.943450275 segundos
+RESULTADO;v2;400;400;2000;2;1;1;3.943450275;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p1_r3.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.943509754 segundos
+RESULTADO;v2;400;400;2000;2;1;1;3.943509754;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p1_r4.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.941402589 segundos
+RESULTADO;v2;400;400;2000;2;1;1;3.941402589;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p1_r5.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=1
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 3.944212671 segundos
+RESULTADO;v2;400;400;2000;2;1;1;3.944212671;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p2_aquecimento.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.051514964 segundos
+RESULTADO;v2;400;400;2000;2;2;2;2.051514964;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p2_r1.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.053672274 segundos
+RESULTADO;v2;400;400;2000;2;2;2;2.053672274;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p2_r2.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.051852113 segundos
+RESULTADO;v2;400;400;2000;2;2;2;2.051852113;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p2_r3.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.051070627 segundos
+RESULTADO;v2;400;400;2000;2;2;2;2.051070627;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p2_r4.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.050505199 segundos
+RESULTADO;v2;400;400;2000;2;2;2;2.050505199;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p2_r5.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=2
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 2.048337688 segundos
+RESULTADO;v2;400;400;2000;2;2;2;2.048337688;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p4_aquecimento.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.115834035 segundos
+RESULTADO;v2;400;400;2000;2;4;4;1.115834035;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p4_r1.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.113740063 segundos
+RESULTADO;v2;400;400;2000;2;4;4;1.113740063;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p4_r2.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.118449629 segundos
+RESULTADO;v2;400;400;2000;2;4;4;1.118449629;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p4_r3.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.103641543 segundos
+RESULTADO;v2;400;400;2000;2;4;4;1.103641543;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p4_r4.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.116898764 segundos
+RESULTADO;v2;400;400;2000;2;4;4;1.116898764;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p4_r5.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=4
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 1.115275584 segundos
+RESULTADO;v2;400;400;2000;2;4;4;1.115275584;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p8_aquecimento.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.637559958 segundos
+RESULTADO;v2;400;400;2000;2;8;8;0.637559958;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p8_r1.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.637606058 segundos
+RESULTADO;v2;400;400;2000;2;8;8;0.637606058;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p8_r2.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.639338401 segundos
+RESULTADO;v2;400;400;2000;2;8;8;0.639338401;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p8_r3.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.638872954 segundos
+RESULTADO;v2;400;400;2000;2;8;8;0.638872954;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p8_r4.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.637680686 segundos
+RESULTADO;v2;400;400;2000;2;8;8;0.637680686;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p8_r5.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=8
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.624052621 segundos
+RESULTADO;v2;400;400;2000;2;8;8;0.624052621;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p16_aquecimento.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643119038 segundos
+RESULTADO;v2;400;400;2000;2;16;16;0.643119038;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p16_r1.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642773130 segundos
+RESULTADO;v2;400;400;2000;2;16;16;0.642773130;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p16_r2.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643020455 segundos
+RESULTADO;v2;400;400;2000;2;16;16;0.643020455;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p16_r3.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.642750199 segundos
+RESULTADO;v2;400;400;2000;2;16;16;0.642750199;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p16_r4.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643146792 segundos
+RESULTADO;v2;400;400;2000;2;16;16;0.643146792;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n400_p16_r5.log ===
+v2 | NX=400 NY=400 | passos=2000 | modo=2 | threads=16
+dt=0.000125 | tempo fisico final=0.25
+Tempo de calculo: 0.643146793 segundos
+RESULTADO;v2;400;400;2000;2;16;16;0.643146793;1.0201061929664921;0;0.28065316221865011;0.053121285106151134
+
+=== v2_n800_p1_aquecimento.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 15.740266744 segundos
+RESULTADO;v2;800;800;2000;2;1;1;15.740266744;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p1_r1.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 15.967988267 segundos
+RESULTADO;v2;800;800;2000;2;1;1;15.967988267;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p1_r2.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.360786805 segundos
+RESULTADO;v2;800;800;2000;2;1;1;16.360786805;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p1_r3.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.024142026 segundos
+RESULTADO;v2;800;800;2000;2;1;1;16.024142026;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p1_r4.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.380596810 segundos
+RESULTADO;v2;800;800;2000;2;1;1;16.380596810;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p1_r5.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=1
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 16.389625206 segundos
+RESULTADO;v2;800;800;2000;2;1;1;16.389625206;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p2_aquecimento.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.658207038 segundos
+RESULTADO;v2;800;800;2000;2;2;2;8.658207038;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p2_r1.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.697255322 segundos
+RESULTADO;v2;800;800;2000;2;2;2;8.697255322;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p2_r2.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.604164645 segundos
+RESULTADO;v2;800;800;2000;2;2;2;8.604164645;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p2_r3.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.782090618 segundos
+RESULTADO;v2;800;800;2000;2;2;2;8.782090618;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p2_r4.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.178883483 segundos
+RESULTADO;v2;800;800;2000;2;2;2;8.178883483;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p2_r5.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=2
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 8.177611962 segundos
+RESULTADO;v2;800;800;2000;2;2;2;8.177611962;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p4_aquecimento.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.350078709 segundos
+RESULTADO;v2;800;800;2000;2;4;4;4.350078709;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p4_r1.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.434348443 segundos
+RESULTADO;v2;800;800;2000;2;4;4;4.434348443;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p4_r2.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.433675087 segundos
+RESULTADO;v2;800;800;2000;2;4;4;4.433675087;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p4_r3.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.431371950 segundos
+RESULTADO;v2;800;800;2000;2;4;4;4.431371950;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p4_r4.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.438499635 segundos
+RESULTADO;v2;800;800;2000;2;4;4;4.438499635;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p4_r5.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=4
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 4.435723663 segundos
+RESULTADO;v2;800;800;2000;2;4;4;4.435723663;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p8_aquecimento.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.451789281 segundos
+RESULTADO;v2;800;800;2000;2;8;8;2.451789281;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p8_r1.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.457887210 segundos
+RESULTADO;v2;800;800;2000;2;8;8;2.457887210;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p8_r2.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.448979047 segundos
+RESULTADO;v2;800;800;2000;2;8;8;2.448979047;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p8_r3.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.456215810 segundos
+RESULTADO;v2;800;800;2000;2;8;8;2.456215810;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p8_r4.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.460013799 segundos
+RESULTADO;v2;800;800;2000;2;8;8;2.460013799;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p8_r5.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=8
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.455726728 segundos
+RESULTADO;v2;800;800;2000;2;8;8;2.455726728;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p16_aquecimento.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.553664037 segundos
+RESULTADO;v2;800;800;2000;2;16;16;2.553664037;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p16_r1.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.553362580 segundos
+RESULTADO;v2;800;800;2000;2;16;16;2.553362580;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p16_r2.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.554745298 segundos
+RESULTADO;v2;800;800;2000;2;16;16;2.554745298;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p16_r3.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.553517198 segundos
+RESULTADO;v2;800;800;2000;2;16;16;2.553517198;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p16_r4.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.554024133 segundos
+RESULTADO;v2;800;800;2000;2;16;16;2.554024133;1.0201061929662534;0;0.41827720096544585;0.064847562073268458
+
+=== v2_n800_p16_r5.log ===
+v2 | NX=800 NY=800 | passos=2000 | modo=2 | threads=16
+dt=3.125e-05 | tempo fisico final=0.0625
+Tempo de calculo: 2.553966750 segundos
+RESULTADO;v2;800;800;2000;2;16;16;2.553966750;1.0201061929662534;0;0.41827720096544585;0.064847562073268458

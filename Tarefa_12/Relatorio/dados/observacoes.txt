@@ -1,0 +1,6 @@
+Campanha registrada como: slurm. Confira o hostname em ambiente.txt.
+Speedup e eficiência forte usam T(1,N) da própria versão, sem mudar a carga.
+ganho_sobre_v0 compara versões no mesmo N e mesmo p.
+Eficiência fraca = T(1,N_base)/T(p,N_base*sqrt(p)), com trabalho/thread constante.
+O número de passos é fixo; o tempo físico diminui ao refinar a malha.
+Nenhuma amostra foi removida. As versões se alternam, mas tamanhos e equipes têm ordem fixa.

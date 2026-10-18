@@ -1,0 +1,22 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  etapa/.style={draw=blue!65!black,fill=blue!5,rounded corners,
+                text width=2.7cm,minimum height=1.6cm,align=center,font=\small},
+  seta/.style={->,thick}]
+\node[etapa] (a) at (0,0) {\texttt{omp for}\\Todas as threads\\calculam o passo};
+\node[etapa] (b) at (3.7,0) {Barreira\\implícita\\do \texttt{for}};
+\node[etapa,fill=orange!15,draw=orange!70!black] (c) at (7.4,0)
+{\texttt{single}\\Uma thread troca\\os ponteiros};
+\node[etapa] (d) at (11.1,0) {Barreira\\implícita\\do \texttt{single}};
+\draw[seta] (a)--(b);
+\draw[seta] (b)--(c);
+\draw[seta] (c)--(d);
+\draw[seta] (d.north) -- ++(0,.8) -| node[pos=.25,above,font=\small]
+{Próximo passo, com os campos completos} (a.north);
+\node[draw=gray!60,dashed,rounded corners,fit=(a)(b)(c)(d),
+      inner sep=9pt,label={[font=\small]below:Uma única região \texttt{parallel} em v2}] {};
+\end{tikzpicture}
+\caption{Sincronização preservada na versão persistente. O término do cálculo precede a troca dos campos, e a troca precede as leituras do passo seguinte.}
+\label{fig:sincronizacao}
+\end{figure}

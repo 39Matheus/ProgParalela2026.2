@@ -1,9 +1,15 @@
 # Tarefa 12 — avaliação de escalabilidade
 
-Preparação da avaliação do código de difusão viscosa da Tarefa 11 em **um nó
-de computação do NPAD**. A Tarefa 11 e seu relatório foram preservados.
-As medições no NPAD ainda serão feitas; esta pasta não contém resultados
-atribuídos ao supercomputador.
+Avaliação do código de difusão viscosa da Tarefa 11 em **um nó de computação
+do NPAD**. A campanha completa está em
+[`resultados/execucao_20261018T180336Z_38920/`](resultados/execucao_20261018T180336Z_38920/):
+225 medições, três versões, três malhas e cinco equipes, com cinco repetições.
+Foi executada pelo job `2214966`, no nó `r1i1n15`.
+
+O [relatório em PDF](Relatorio/relatorio.pdf) contém a explicação, diagramas
+TikZ, análise forte/fraca, fontes completos e registros nos apêndices.
+O [projeto para Overleaf](Relatorio/overleaf.zip) é independente dos demais
+diretórios. Consulte as [instruções do relatório](Relatorio/README.md).
 
 A configuração de submissão foi adaptada ao **job CPU remoto da Tarefa 18**
 enviado pelo autor: partição `intel-128`, GCC diretamente no `PATH`, compilação
@@ -295,4 +301,7 @@ de eficiência com a carga fixa; recuperação ao aumentar a malha; diagonal
 fraca; dispersão; custo de regiões/barreiras; e possíveis limites de memória.
 Sem contadores ou medições adicionais, limites de cache e largura de banda
 devem ser tratados como hipóteses, não como causas quantitativamente provadas.
-O relatório da Tarefa 12 será feito com esses dados reais.
+O relatório da Tarefa 12 utiliza a campanha completa indicada no início desta
+página. O menor tempo médio ocorreu com oito threads em todas as combinações
+de versão e malha. As diferenças entre versões foram pequenas; o relatório
+discute os limites das conclusões e a perda de eficiência com dezesseis threads.
