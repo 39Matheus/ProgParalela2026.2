@@ -1,0 +1,25 @@
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[font=\small,>=Latex,
+  fase/.style={draw=blue!65!black,fill=blue!5,text width=2.55cm,
+               minimum height=1.2cm,align=center}]
+\node[anchor=east] at (-1.8,1.8) {CPU};
+\node[draw=blue!65!black,fill=blue!5,align=center,
+      text width=11.2cm,minimum height=1cm] at (4,1.8)
+{Ler as entradas, somar e escrever o resultado na memória do host};
+\node[anchor=east] at (-1.8,0) {GPU};
+\node[fase] (a) at (0,0) {Enviar $a$ e $b$\\80 MB};
+\node[fase,fill=gray!10,draw=gray!65] (b) at (3.5,0)
+{Preparar e lançar\\o cálculo};
+\node[fase,fill=orange!18,draw=orange!75!black] (c) at (7,0)
+{Somar\\$c_i=a_i+b_i$};
+\node[fase] (d) at (10.5,0) {Trazer $c$\\40 MB};
+\draw[->,thick] (a)--(b);
+\draw[->,thick] (b)--(c);
+\draw[->,thick] (c)--(d);
+\node[align=center,text width=14cm] at (4.7,-1.5)
+{O tempo total da chamada depende de todas as etapas.\\Uma soma por elemento oferece pouco cálculo para amortizar a movimentação.};
+\end{tikzpicture}
+\caption{Custos de uma soma com dados inicialmente no host e transferência explícita. Os blocos não estão em escala de tempo e não representam uma decomposição medida. O envio e o retorno ocorrem na entrada e na saída da região, não uma vez por iteração do laço.}
+\label{fig:custos}
+\end{figure}

@@ -13,6 +13,6 @@
 \node[draw=gray!60,dashed,fit=(a)(b)(c)(d),inner sep=8pt,
       label={[font=\footnotesize]below:Exemplo: quatro GPUs visíveis na alocação}] {};
 \end{tikzpicture}
-\caption{Reservar GPUs e utilizá-las são decisões distintas. Uma única região target, sem divisão explícita entre dispositivos, não distribui automaticamente o vetor por quatro GPUs. O desenho descreve o modelo, condicionado à existência de offload.}
+\caption{Oito GPUs no nó e quatro GPUs solicitadas ao Slurm não significam uma soma distribuída por quatro dispositivos. O programa possui uma região target, sem particionamento explícito do vetor entre GPUs.}
 \label{fig:dispositivos}
 \end{figure}

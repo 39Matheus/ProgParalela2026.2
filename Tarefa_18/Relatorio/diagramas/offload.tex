@@ -10,8 +10,8 @@
 \draw[->,thick] (d.210)--node[below,align=center,font=\footnotesize]
 {Saída: $c$\\40 MB de dados} (h.330);
 \node[align=center,text width=12.3cm] at (4,-2.65)
-{\texttt{float}: quatro bytes por elemento; $N=10^7$.\\Copiar o valor de um ponteiro não equivale a copiar seu vetor.};
+{Cada vetor possui dez milhões de elementos.\\A referência fica no host para a validação.};
 \end{tikzpicture}
-\caption{Dados necessários para uma soma em memórias separadas. O desenho explica o mapeamento proposto; não representa transferências medidas nos logs históricos.}
+\caption{Modelo de movimentação dos dados úteis entre host e dispositivo. O desenho representa as entradas e a saída necessárias à operação, sem medir o tráfego efetivo do runtime.}
 \label{fig:offload}
 \end{figure}

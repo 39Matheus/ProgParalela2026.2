@@ -1,4 +1,4 @@
-"""Extrai os logs existentes e gera tabelas e gráficos, sem executar t18."""
+"""Analisa somente as séries CPU e Tesla V100."""
 from pathlib import Path
 import csv
 import re
@@ -18,14 +18,15 @@ SERIES = (
     ("CPU4.out", "CPU 4", "CPU", 4, "service3", "CPU não registrada"),
     ("GPUa.out", "V100 a", "GPU", None, "gpunode1", "Tesla V100-SXM2-16GB"),
     ("GPUb.out", "V100 b", "GPU", None, "gpunode1", "Tesla V100-SXM2-16GB"),
-    ("resultado_gpu_2133025.out", "H200", "GPU", None, "gpunode4", "NVIDIA H200"),
-    ("resultado_gpu_2134904.out", "V100 / 4 visíveis", "GPU", None, "gpunode1",
+    ("resultado_gpu_2134904.out", "V100 c", "GPU", None, "gpunode1",
      "Tesla V100-SXM2-16GB"),
 )
 records, summaries = [], []
 for filename, label, mode, threads, host, model in SERIES:
     text = (DATA / "logs" / filename).read_text(encoding="utf-8")
     assert f"Hostname: {host}.npad.internal" in text
+    if mode == "GPU":
+        assert "Tesla V100-SXM2-16GB" in text
     chunks = re.split(r"----- (Warm-up|Execucao \d+) -----", text)
     times, warmup = [], None
     for i in range(1, len(chunks), 2):
@@ -48,11 +49,11 @@ for filename, label, mode, threads, host, model in SERIES:
     summaries.append(dict(file=filename, label=label, mode=mode, threads=threads,
                           host=host, model=model, warmup=warmup, times=times,
                           avg=avg, sd=sd, cv=100 * sd / avg))
-assert len(records) == 39
+assert len(records) == 33
 
 with (DATA / "tempos_extraidos.csv").open("w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f, delimiter=";", lineterminator="\n")
-    writer.writerow(("arquivo", "serie", "modo_declarado", "threads_configuradas",
+    writer.writerow(("arquivo", "serie", "modo", "threads_configuradas",
                      "hostname", "repeticao_0_aquecimento", "N", "tolerancia",
                      "erros", "tempo_segundos"))
     writer.writerows(records)
@@ -81,14 +82,15 @@ def table(name, columns, heading, caption, rows, label):
 
 table("resumo.tex", "lrrrr",
       r"Série & Média (ms) & $s$ (ms) & CV (\%) & Aquecimento (ms)",
-      "Cinco medições por série; aquecimentos separados e excluídos das médias. "
-      "Os nomes de GPU identificam o hardware listado no nó, sem confirmar offload.",
+      "Séries CPU e Tesla V100. Cinco medições por série; "
+      "aquecimentos separados e excluídos das médias.",
       [[row["label"], pt(row["avg"] * 1000, 6), pt(row["sd"] * 1000, 6),
         pt(row["cv"], 2), "---" if row["warmup"] is None else pt(row["warmup"] * 1000, 6)]
        for row in summaries], "tab:resumo")
 table("brutos.tex", "lrrr",
       r"Série & Repetição & Tempo (s) & Erros",
-      "Todos os 39 registros. Repetição 0 identifica o aquecimento em processo separado.",
+      "Todos os 33 registros selecionados. Repetição 0 identifica o aquecimento "
+      "em processo separado.",
       [[row[1], str(row[5]), pt(row[9], 9), str(row[8])] for row in records], "tab:brutos")
 table("cpu.tex", "lrrr",
       r"Referência de uma thread & $T_1/T_4$ & $E_4$ (\%) & $T_4$ (ms)",
@@ -96,6 +98,12 @@ table("cpu.tex", "lrrr",
       [[row["label"], pt(row["avg"] / summaries[2]["avg"], 4),
         pt(100 * row["avg"] / summaries[2]["avg"] / 4, 2),
         pt(summaries[2]["avg"] * 1000, 6)] for row in summaries[:2]], "tab:cpu")
+table("comparacao.tex", "lrrr",
+      r"Série & $T_{GPU}/T_{CPU\,1a}$ & $T_{GPU}/T_{CPU\,1b}$ & $T_{GPU}/T_{CPU\,4}$",
+      "Razão entre tempos médios. Valores maiores que um indicam maior tempo "
+      "da chamada GPU em relação à referência CPU da coluna.",
+      [[row["label"], *[pt(row["avg"] / cpu["avg"], 3) for cpu in summaries[:3]]]
+       for row in summaries[3:]], "tab:comparacao")
 
 plt.rcParams.update({"font.size": 10, "axes.spines.top": False,
                      "axes.spines.right": False, "pdf.fonttype": 42})
@@ -107,10 +115,10 @@ for i, row in enumerate(summaries):
                  fmt="none", ecolor="black", capsize=4)
     ax.scatter([value * 1000 for value in row["times"]], [i] * 5,
                 color=color, s=25, zorder=3)
-ax.set(yticks=range(7), yticklabels=[row["label"] for row in summaries],
+ax.set(yticks=range(len(summaries)), yticklabels=[row["label"] for row in summaries],
        xlabel="Tempo da chamada medida (ms)", xlim=(0, 15))
 ax.invert_yaxis()
 ax.grid(axis="x", alpha=.22)
 fig.savefig(FIG / "tempos.pdf", bbox_inches="tight")
 plt.close(fig)
-print("Sete séries, 35 medições e quatro aquecimentos extraídos e conferidos.")
+print("Seis séries: 30 medições e três aquecimentos CPU/V100 conferidos.")

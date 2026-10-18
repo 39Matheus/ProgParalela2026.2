@@ -92,60 +92,77 @@
 \maketitle
 
 \section*{Resumo}
-Este relatório apresenta a implementação e a análise das execuções de adição de vetores em OpenMP, seguindo os exercícios de CPU e GPU indicados na tarefa 18. O programa soma dez milhões de elementos em precisão simples, verifica o resultado e mede o tempo da chamada de soma. Foram analisadas sete séries de cinco medições, além de quatro execuções identificadas como aquecimento. Na CPU, os tempos médios foram de $10{,}568$ ms e $9{,}975$ ms com uma thread configurada, e $5{,}379$ ms com quatro. Os logs do modo GPU registraram médias entre $5{,}997$ ms e $13{,}484$ ms em nós que listam aceleradores V100 ou H200. Todos os registros apresentaram zero erros. Contudo, os arquivos não comprovam a execução efetiva do cálculo no acelerador: há limitações na compilação, na confirmação do dispositivo e no tratamento dos vetores alocados dinamicamente. O relatório explica essas diferenças, compara os tempos observados e apresenta os ajustes necessários para concluir uma comparação CPU--GPU verificada. Os códigos, os registros completos e a inspeção dos binários estão nos apêndices.
+Este relatório compara a soma de vetores em CPU e em GPU NVIDIA Tesla V100 com OpenMP. Foram analisadas três séries CPU e três séries V100, totalizando 30 medições e três execuções de aquecimento. Cada execução soma dez milhões de elementos em precisão simples. As médias CPU foram de $10{,}568$ ms e $9{,}975$ ms com uma thread configurada, e $5{,}379$ ms com quatro. Na V100, as médias ficaram entre $12{,}176$ ms e $13{,}484$ ms. Todos os registros apresentaram zero erros. A CPU foi mais rápida na operação medida. A interpretação considera a baixa quantidade de cálculo por elemento e os custos de movimentar os dados e iniciar a execução na GPU. Como os logs medem a chamada completa, não se atribui uma parcela numérica do tempo às transferências ou ao kernel isoladamente. O texto explica as diretivas, o intervalo medido e a dispersão dos tempos; os códigos e os registros completos estão nos apêndices.
 
-\section{Objetivo e material analisado}
-O enunciado solicita realizar os exercícios de soma de vetores do tutorial de OpenMP para GPUs em um nó com GPU do NPAD, comparar a execução somente na CPU com o uso da GPU e relatar problemas e soluções \cite{enunciado,tutorial}. O objetivo inclui compreender onde o cálculo executa e quais custos entram na medição.
+\section{Objetivo e seleção das execuções}
+O enunciado solicita realizar os exercícios de adição de vetores do tutorial de GPUs com OpenMP no NPAD, comparar CPU e GPU e apresentar os problemas encontrados e as soluções adotadas \cite{enunciado,tutorial}. A comparação deve considerar o que está dentro da medição: executar uma operação completa com dados inicialmente no host pode ter um resultado diferente de medir apenas um kernel com dados já na GPU.
 
-Foram analisados \texttt{t18.c}, \texttt{somas.c}, \texttt{aux18.c}, \texttt{jobs.sh}, os sete arquivos de saída e os dois executáveis enviados ao GitHub no commit \texttt{e17b7d0}, presentes na revisão \texttt{9118003} \cite{repositorio}. Os executáveis foram inspecionados estaticamente, sem produzir novas medições. O relatório preserva os registros disponíveis e distingue as melhorias já presentes no código dos ajustes ainda propostos.
+A implementação está organizada nos arquivos \texttt{t18.c}, \texttt{aux18.c}, \texttt{somas.c} e \texttt{jobs.sh} \cite{repositorio}. A análise utiliza as três séries CPU e as três séries com Tesla V100-SXM2-16GB. Foram mantidos o mesmo tamanho dos vetores e a mesma tolerância; as execuções com outros aceleradores não integram a comparação. A identificação dos registros é:
 
-O enunciado identifica os exercícios pelos slides 27 e 48. Na edição SC23 do tutorial disponível no repositório NPAD consultado, os exercícios equivalentes de soma na CPU e na GPU aparecem nas páginas 29 e 50 do PDF. Essa diferença de paginação não altera a atividade: o primeiro usa distribuição do laço na CPU; o segundo introduz \texttt{target} e \texttt{loop} para offload.
+\begin{table}[H]
+\centering\small
+\begin{tabular}{lp{8cm}l}
+\toprule
+Série & Arquivo original & Configuração\\
+\midrule
+CPU 1a & \texttt{CPU1a.out} & CPU, 1 thread\\
+CPU 1b & \texttt{CPU1b.out} & CPU, 1 thread\\
+CPU 4 & \texttt{CPU4.out} & CPU, 4 threads\\
+V100 a & \texttt{GPUa.out} & GPU V100\\
+V100 b & \texttt{GPUb.out} & GPU V100\\
+V100 c & \texttt{resultado\_gpu\_2134904.out} & GPU V100\\
+\bottomrule
+\end{tabular}
+\caption{Arquivos utilizados na comparação CPU/V100. As estatísticas são calculadas separadamente para cada série.}
+\label{tab:selecao}
+\end{table}
 
-\section{O problema: adição de vetores}
-\subsection{Operação e independência das iterações}
-Dados dois vetores $a$ e $b$ de tamanho $N$, calcula-se
+O enunciado cita os slides 27 e 48. Na edição SC23 disponível no tutorial NPAD consultado, os exercícios equivalentes aparecem nas páginas 29 e 50 do PDF: primeiro a distribuição do laço na CPU, depois o uso de \texttt{target} e \texttt{loop} na GPU.
+
+\section{Operação e quantidade de trabalho}
+\subsection{Soma elemento a elemento}
+Dados os vetores $a$ e $b$, calcula-se
 \[
 c_i=a_i+b_i,\qquad i=0,\ldots,N-1.
 \]
-O elemento $c_i$ depende apenas de $a_i$ e $b_i$. Não há uma soma acumulada entre os índices, e uma iteração não precisa do resultado da anterior. Essa independência permite distribuir as iterações entre unidades de execução.
+Cada resultado depende apenas de duas entradas com o mesmo índice. Não existe uma soma acumulada entre posições. Por isso, diferentes índices podem ser processados simultaneamente, sem que uma iteração precise esperar pelo resultado de outra.
 
 \input{diagramas/vetores.tex}
 
-O programa utiliza \texttt{float} e inicializa $a_i$ com a conversão de $i$, $b_i$ com duas vezes esse valor e o vetor de referência \texttt{res} com a mesma expressão de soma aplicada no cálculo. O vetor $c$ começa zerado. Essa referência verifica a implementação da operação em precisão simples; não é uma solução independente em precisão maior.
+Nesta implementação, $N=10^7$, os vetores usam \texttt{float}, $a_i$ recebe a conversão de $i$, $b_i$ recebe duas vezes esse valor e $c_i$ começa zerado. O vetor \texttt{res} guarda a expressão de referência $a_i+b_i$, também em precisão simples, para a comparação final.
 
-\subsection{Trabalho, memória e intensidade aritmética}
-Para $N=10^7$ e \texttt{float} de quatro bytes, cada vetor ocupa 40 MB. Os quatro vetores do host ocupam 160 MB, sem contar bibliotecas e estruturas auxiliares. A soma percorre dois vetores de entrada e um de saída: são 120 MB de dados úteis por passagem.
+\subsection{Intensidade aritmética e volume de dados}
+Com quatro bytes por \texttt{float}, cada vetor ocupa 40 MB. Os quatro vetores no host ocupam 160 MB: duas entradas, uma saída e uma referência. Os dados úteis da soma são 80 MB de entrada e 40 MB de saída.
 
-Cada elemento envolve uma adição, duas leituras e uma escrita. A relação idealizada é
+Cada elemento exige uma adição, duas leituras e uma escrita. A \textit{intensidade aritmética}, isto é, a quantidade de cálculo em relação aos dados acessados, é aproximadamente
 \[
 I=\frac{1\text{ operação}}{12\text{ bytes}}
 \approx0{,}083\text{ operação/byte}.
 \]
-Essa baixa intensidade aritmética ajuda a explicar por que mover os dados pode custar mais que somá-los. A quantidade de núcleos ou a capacidade máxima de cálculo de uma GPU, isoladamente, não determina o tempo desse programa. Os 120 MB são uma contagem de dados do algoritmo; o tráfego físico pode ser diferente devido às caches e às políticas de escrita.
+Essa relação é pequena: o algoritmo movimenta dados para realizar apenas uma soma por elemento. Portanto, uma grande capacidade de cálculo da GPU não garante uma chamada mais rápida quando é necessário disponibilizar as entradas no dispositivo e devolver o resultado ao host.
 
-O acesso é contíguo: $a[i]$, $b[i]$ e $c[i]$ são percorridos em ordem. Isso favorece localidade espacial e operações vetoriais. Paralelismo entre threads e vetorização são mecanismos diferentes: o compilador pode processar vários elementos por instrução mesmo com uma única thread.
+\input{diagramas/offload.tex}
 
-\section{Organização e conceitos de OpenMP}
-\subsection{Programa principal e funções auxiliares}
-O programa recebe \texttt{N}, \texttt{TOL} e \texttt{MODO}. O modo 0 chama \texttt{soma\_cpu}; o modo 1 chama \texttt{soma\_gpu}. As funções de \texttt{aux18.c} validam os argumentos, alocam e inicializam os vetores, verificam o resultado e liberam a memória.
+A figura representa as regiões de dados úteis de uma transferência explícita. Não é uma medição de tráfego. A implementação utiliza ponteiros de \texttt{malloc} sem cláusulas \texttt{map} explícitas; a forma efetiva de disponibilizar esses dados depende do suporte e do modelo de memória do compilador e do runtime. Os logs não registram bytes transferidos, e os 120 MB não são apresentados como uma medição dessas transferências.
 
-Os arquivos \texttt{aux18.c} e \texttt{somas.c} são incluídos diretamente por \texttt{t18.c}. Portanto, o comando apresentado compila somente \texttt{t18.c}; os conteúdos dos outros dois arquivos já são incorporados ao mesmo módulo de compilação. Compilá-los novamente no mesmo comando provocaria definições duplicadas.
+\section{Implementação e conceitos de OpenMP}
+\subsection{Organização dos arquivos}
+\texttt{t18.c} recebe tamanho, tolerância e modo, chama as etapas e mede a soma. \texttt{aux18.c} contém leitura dos argumentos, alocação, inicialização, validação e liberação. \texttt{somas.c} contém as duas funções de soma. \texttt{jobs.sh} solicita recursos ao Slurm, compila e executa as repetições.
 
-A alocação com \texttt{malloc} evita manter os quatro grandes vetores na pilha de uma função. Essa é uma adaptação útil em relação ao exemplo com arrays locais de tamanho fixo. Os arquivos não contêm um log de falha de pilha; por isso, a escolha é explicada como decisão de implementação, sem inventar um erro anterior.
+Os dois arquivos auxiliares são incluídos diretamente em \texttt{t18.c}. Portanto, o comando compila somente \texttt{t18.c}; adicionar os mesmos arquivos novamente ao comando produziria definições duplicadas. A alocação com \texttt{malloc} permite reservar os vetores no heap, evitando depender de espaço suficiente na pilha para quatro arrays grandes. As conversões dos argumentos verificam formato e faixa, e as alocações são verificadas antes do uso.
 
-\subsection{CPU: parallel for}
+\subsection{CPU: distribuição do laço com parallel for}
 \begin{lstlisting}[style=CStyle]
 #pragma omp parallel for
 for (int i = 0; i < N; i++) {
     c[i] = a[i] + b[i];
 }
 \end{lstlisting}
-A diretiva cria uma região paralela e distribui as iterações entre as threads da equipe. Cada thread escreve em posições distintas de $c$. O fim da região sincroniza a equipe antes de o programa prosseguir. O número configurado vem de \texttt{OMP\_NUM\_THREADS}; os logs imprimem essa configuração, mas não medem o tamanho efetivo da equipe dentro da região.
+A diretiva cria uma região paralela e distribui as iterações pela equipe de threads. Cada thread escreve em elementos diferentes de $c$. A sincronização ao final garante que a soma esteja concluída antes da continuação do programa.
 
-No job de CPU, \path{OMP_PLACES=cores} descreve locais de execução. A configuração \path{OMP_PROC_BIND=close} solicita posicionar threads próximas nesses locais. Essas variáveis orientam o runtime; não acrescentam CPUs à alocação do Slurm nem comprovam, por si só, o posicionamento realizado.
+O percurso em índices crescentes acessa posições contíguas dos vetores. Isso favorece a localidade espacial: uma linha de cache traz dados próximos que poderão ser usados nas próximas iterações. O compilador também pode vetorizar a soma, processando vários elementos por instrução. Vetorização e distribuição entre threads são mecanismos distintos.
 
-\subsection{GPU: target, loop e offload}
-O código enviado utiliza:
+\subsection{GPU: target, loop e MANDATORY}
 \begin{lstlisting}[style=CStyle]
 #pragma omp target
 #pragma omp loop
@@ -153,219 +170,187 @@ for (int i = 0; i < N; i++) {
     c[i] = a[i] + b[i];
 }
 \end{lstlisting}
-\texttt{target} delimita uma região candidata à execução em um dispositivo. \texttt{loop} descreve um laço cujas iterações podem ser distribuídas no contexto de execução disponível. A tradução para a GPU depende de um compilador e de um runtime com suporte às diretivas e ao dispositivo \cite{openmp}.
+\texttt{target} delimita a região destinada ao dispositivo; \texttt{loop} descreve o laço que pode ser distribuído no contexto de execução disponível. O encaminhamento da execução do host para o dispositivo é chamado \textit{offload}. Nesta tarefa, o host inicia o programa e realiza a validação, enquanto o modo GPU utiliza a região target para a soma \cite{openmp}.
 
-\textit{Offload} é o encaminhamento da execução do host para um dispositivo. \textit{Host} é o sistema que inicia o programa, normalmente a CPU; \textit{device} é o dispositivo de destino. Quando o runtime executa a região target no host em vez do acelerador, ocorre \textit{fallback}. Assim, escrever \texttt{target} ou imprimir ``GPU'' não basta para comprovar offload.
-
-\subsection{Ponteiros e acesso aos dados}
-No exemplo com arrays de tamanho conhecido, o compilador dispõe de informações sobre sua extensão. Nesta adaptação, $a$, $b$ e $c$ são ponteiros retornados por \texttt{malloc}. O valor do ponteiro identifica um endereço no host, mas não descreve sozinho todos os elementos do vetor nem garante que esse endereço seja acessível no dispositivo.
-
-Para memórias separadas, uma forma explícita de indicar as regiões é:
-\begin{lstlisting}[style=CStyle]
-map(to:a[0:N], b[0:N]) map(from:c[0:N])
-\end{lstlisting}
-\texttt{to} indica as entradas enviadas ao dispositivo; \texttt{from} indica o resultado que deve retornar ao host. O vetor de referência pode permanecer no host, onde será feita a verificação. Configurações de memória compartilhada ou gerenciada podem ter outro comportamento, mas não foram identificadas nos registros fornecidos.
-
-\input{diagramas/offload.tex}
-
-O tutorial adaptado possui exemplos com diferentes formas de alocação. Copiar apenas as diretivas de um exemplo não garante que o tratamento de dados continue equivalente após trocar arrays locais por ponteiros. A versão enviada não explicita o mapeamento das regiões de memória; esse ponto precisa ser resolvido e testado junto com a confirmação do dispositivo.
-
-\subsection{Validação e reduction}
-O programa conta quantas posições satisfazem
-\[
-|c_i-\mathrm{res}_i|>\mathrm{TOL},\qquad \mathrm{TOL}=10^{-9}.
-\]
-A verificação usa \texttt{parallel for reduction(+:err)}. Cada thread acumula sua contagem, e as contagens são somadas ao final. A redução evita que várias threads atualizem simultaneamente o mesmo contador sem coordenação.
-
-Todos os registros mostraram \texttt{Erros: 0}. Isso confirma o atendimento ao critério implementado, mas não informa se a soma ocorreu na CPU ou na GPU. A tolerância é absoluta; como a referência usa a mesma operação em \texttt{float}, zero erros não significa precisão decimal de nove casas. O verificador também não testa explicitamente valores não finitos, e o \texttt{main} retorna sucesso mesmo se a contagem for positiva. Esses são limites da validação atual, não falhas numéricas observadas nos logs.
-
-\section{Ambiente, submissão e medição}
-\subsection{Hardware disponível e hardware efetivamente utilizado}
-Os logs do modo CPU informam \texttt{service3.npad.internal}. Os do modo GPU informam \texttt{gpunode1}, com V100, e \texttt{gpunode4}, com H200. A relação de hardware do NPAD indicada e transcrita pelo autor descreve as classes da Tabela~\ref{tab:hardware} \cite{hardware}.
-
-\begin{table}[H]
-\centering\small
-\begin{tabular}{p{2.2cm}p{4cm}p{3.3cm}p{3.7cm}}
-\toprule
-Classe & Processadores do host & RAM do host & Aceleradores por nó\\
-\midrule
-\texttt{gpu-8-v100} & 2 Xeon E5-2683 v4 & 512 GB DDR4 & 8 V100-SXM2, 16 GB por GPU\\
-\texttt{gpu-4-h200} & 2 Xeon Gold 6548N & 1 TB DDR5 & 4 H200, 141 GB HBM3e por GPU\\
-\bottomrule
-\end{tabular}
-\caption{Especificações de referência das classes de nós, não uma coleta de hardware feita pelos jobs. RAM do host e memória da GPU são recursos distintos.}
-\label{tab:hardware}
-\end{table}
-
-Um nó com GPU também tem CPUs. O \texttt{nvidia-smi} confirma a presença dos aceleradores visíveis; não comprova que o laço do programa foi executado neles. Além disso, os logs não registram o modelo de CPU de \texttt{service3}, a versão do compilador de cada série ou a associação exata entre todos os jobs e partições. Não se atribui a esse hostname o hardware de outro nó.
-
-\subsection{O que jobs.sh solicita}
-O script submete dois jobs independentes. O job de CPU pede a partição \texttt{intel-128}, um nó, uma tarefa e uma CPU por tarefa. O job de GPU pede \texttt{gpu-8-v100}, um nó, uma tarefa e quatro GPUs. Ambos têm limite de dois minutos e compilam com:
+O job GPU contém explicitamente:
 \begin{lstlisting}[style=Terminal]
-gcc -O3 -fopenmp -std=c11 t18.c -o executavel -lm
+export OMP_TARGET_OFFLOAD=MANDATORY
 \end{lstlisting}
-No job de GPU, exporta-se \texttt{OMP\_TARGET\_OFFLOAD=MANDATORY}. Em uma implementação que ofereça suporte a essa opção, ela exige o uso do dispositivo para regiões target não destinadas ao host, em vez de permitir fallback silencioso. Entretanto, a variável escrita no script não demonstra qual runtime foi usado ou que sua versão a reconheceu. É necessário verificar o comportamento real.
+No padrão OpenMP, \texttt{MANDATORY} exige a execução no dispositivo para essas regiões target e determina falha caso o offload não possa ser realizado, em vez de permitir uma execução silenciosa no host, chamada \textit{fallback}. Essa política foi definida no job das execuções V100. Seu funcionamento pressupõe compilador e runtime compatíveis com offload e com as diretivas utilizadas.
 
-O script atual não reproduz sozinho todos os logs: ele configura uma thread de CPU, enquanto \texttt{CPU4.out} informa quatro, e solicita V100, enquanto um registro lista H200. Isso indica configurações diferentes entre as séries; os scripts históricos dessas variações não foram fornecidos. Os executáveis enviados contêm identificação GCC 8.5.0, Red Hat \texttt{8.5.0-22}, mas isso não prova que todas as séries tenham sido geradas pelos mesmos binários.
+A variável define a política de execução. Ela não divide automaticamente o vetor entre GPUs, não especifica o mapeamento dos vetores e não mantém os dados disponíveis entre processos distintos. Assim, exigir o uso da GPU não elimina os custos que entram na chamada medida.
+
+\subsection{Validação e redução}
+Depois da soma, o programa conta as posições em que
+\[
+|c_i-\mathrm{res}_i|>10^{-9}.
+\]
+A contagem usa \texttt{parallel for reduction(+:err)}: cada thread acumula sua contribuição, e as contribuições são somadas ao final. Isso evita atualizações concorrentes desprotegidas no mesmo contador.
+
+Todos os 33 registros selecionados, incluindo os aquecimentos, mostraram zero erros pelo critério implementado. A referência usa a mesma expressão em \texttt{float}; esse resultado verifica a soma nesse critério, sem significar precisão decimal de nove casas. A validação fica fora do intervalo cronometrado.
+
+\section{Ambiente e metodologia}
+\subsection{Recursos do NPAD}
+Os logs CPU identificam \texttt{service3.npad.internal}, com uma ou quatro threads configuradas. Os logs V100 identificam \texttt{gpunode1.npad.internal} e Tesla V100-SXM2-16GB. A documentação de hardware do NPAD informa que a classe \texttt{gpu-8-v100} possui, por nó, dois Intel Xeon E5-2683 v4, 512 GB DDR4 e oito GPUs V100 com 16 GB por GPU \cite{hardware}. RAM do host e memória da GPU são recursos distintos. O modelo da CPU de \texttt{service3} não consta dos registros do experimento.
+
+O script CPU solicita \texttt{intel-128}, um nó e uma tarefa. O script apresentado configura uma CPU por tarefa; o log CPU 4 documenta a variação com quatro threads. A quantidade configurada é exportada para \path{OMP_NUM_THREADS}. As variáveis \path{OMP_PLACES=cores} e \path{OMP_PROC_BIND=close} orientam o posicionamento das threads nos locais de execução.
+
+O script GPU solicita a partição \texttt{gpu-8-v100} e quatro GPUs. A quantidade de GPUs existentes no nó ou reservadas ao job não equivale à quantidade usada pelo algoritmo: o fonte possui uma região target e não implementa uma divisão do vetor entre dispositivos.
 
 \input{diagramas/dispositivos.tex}
 
-A região target não contém uma divisão do vetor entre dispositivos. Logo, nem o pedido de quatro GPUs nem quatro linhas no \texttt{nvidia-smi} permitem classificar uma execução como soma em quatro GPUs. Os registros são tratados como séries em nós com aceleradores visíveis, sem uma afirmação de paralelismo entre GPUs.
+Os dois modos utilizam o comando de compilação apresentado no job, com \texttt{-O3}, OpenMP e C11:
+\begin{lstlisting}[style=Terminal]
+gcc -O3 -fopenmp -std=c11 t18.c -o executavel -lm
+\end{lstlisting}
+O nome do executável e o argumento final selecionam CPU ou GPU. As comparações preservam $N=10^7$ e tolerância $10^{-9}$; não se misturam resultados de outras classes de aceleradores.
 
-\subsection{Intervalo cronometrado}
-\texttt{omp\_get\_wtime()} é chamado imediatamente antes e depois da função de soma. Alocação, inicialização, validação e impressão ficam fora do intervalo.
+\subsection{Intervalo de medição}
+\texttt{omp\_get\_wtime()} é chamado antes e depois de \texttt{soma\_cpu} ou \texttt{soma\_gpu}. O número impresso é o tempo da chamada completa. Alocação, inicialização, construção da referência, verificação e impressão ficam fora desse intervalo.
 
 \input{diagramas/tempo.tex}
 
-Em uma execução verificada com mapeamento e memórias separadas, o tempo dessa chamada incluiria preparação do offload, transferências, execução e sincronização de retorno. Seria uma comparação da operação completa com dados inicialmente no host, não apenas do kernel residente na GPU. Os logs existentes não separam essas parcelas nem confirmam que ocorreram transferências.
+A região target não usa \texttt{nowait}; a chamada espera sua conclusão. Assim, o tempo GPU é avaliado como o custo da operação a partir dos dados no host, incluindo os custos de offload presentes no caminho executado. Não se trata de uma medição isolada do kernel com os dados previamente residentes na GPU.
 
-\subsection{Repetições e limite do aquecimento}
-Cada série contém cinco processos medidos. As quatro séries do modo GPU incluem ainda um processo anterior denominado \texttt{Warm-up}: são 35 medições e quatro aquecimentos, todos preservados. Os aquecimentos ficam fora das médias.
+\subsection{Repetições, aquecimento e CV}
+São seis séries de cinco medições: 30 tempos utilizados nas médias. As três séries V100 possuem uma execução anterior identificada como \texttt{Warm-up}, excluída da média, totalizando 33 registros preservados.
 
-Cada comando \texttt{./t18\_gpu} inicia um novo processo, que termina após uma soma. Portanto, o contexto e os recursos privados daquele processo não permanecem ativos no seguinte. A execução anterior pode influenciar condições gerais do sistema, mas não garante excluir o custo inicial do runtime ou da GPU das cinco medições. Um aquecimento do mesmo contexto exige repetição dentro do mesmo processo.
+Cada chamada ao executável inicia um processo e realiza uma soma. Por isso, o aquecimento anterior não garante reutilizar o mesmo contexto de GPU no processo seguinte. As cinco medições continuam sujeitas aos custos iniciais presentes em cada chamada. Isso caracteriza o experimento, em vez de uma avaliação de um contexto persistente já aquecido.
 
-As médias e desvios são calculados separadamente para cada arquivo, sem remover amostras. Para cinco tempos $T_r$:
+Para cinco tempos $T_r$, usam-se média $\overline T$, desvio padrão amostral $s$ e coeficiente de variação:
 \[
 \overline T=\frac{1}{5}\sum_{r=1}^{5}T_r,\qquad
 s=\sqrt{\frac{\sum_{r=1}^{5}(T_r-\overline T)^2}{4}},\qquad
 CV=100\frac{s}{\overline T}.
 \]
-As barras dos gráficos representam um desvio padrão amostral, não intervalos de confiança. Os arquivos não contêm datas de execução para todas as séries nem estados finais de todos os jobs; esses dados não são inferidos dos nomes dos arquivos.
+O \textit{coeficiente de variação} (CV) expressa a dispersão dos tempos em relação à média. Por exemplo, média de 10 ms e desvio de 0,2 ms correspondem a CV de $2\%$. Um CV baixo indica tempos próximos entre si; não significa menor tempo, menor erro numérico ou maior eficiência da GPU. As barras do gráfico representam um desvio padrão amostral.
 
-\section{Resultados observados}
-\subsection{Tempos e dispersão}
+\section{Resultados CPU e V100}
+\subsection{Tempos médios e dispersão}
 {\small\input{tabelas/resumo.tex}}
 
 \begin{figure}[H]
 \centering\includegraphics[width=\linewidth]{tempos.pdf}
-\caption{Todas as 35 medições, com médias e desvios. Azul: modo CPU. Laranja: modo declarado GPU, ainda sem comprovação do dispositivo de execução. V100 e H200 identificam o hardware listado nos nós.}
+\caption{As 30 medições selecionadas, com médias e desvios amostrais. Azul: CPU. Laranja: V100. Os três aquecimentos GPU não entram no gráfico nem nas médias.}
 \label{fig:tempos}
 \end{figure}
 
-Todas as séries têm dispersão interna relativamente pequena: os CVs variam de cerca de $0{,}19\%$ a $2{,}79\%$. Isso indica repetibilidade dos tempos dentro dos arquivos, mas não comprova o dispositivo utilizado nem elimina diferenças entre campanhas.
+A CPU com quatro threads apresentou a menor média, $5{,}379$ ms. As duas séries CPU de uma thread também foram mais rápidas que todas as séries V100. Os CVs variam de aproximadamente $0{,}19\%$ a $2{,}79\%$, indicando pequena dispersão interna nas séries.
 
-As duas séries de uma thread diferem aproximadamente $5{,}94\%$ em suas médias, mais que suas dispersões internas. Por isso, são mantidas separadas. Escolher apenas uma delas sem explicar a referência modificaria o ganho atribuído à execução com quatro threads.
+As médias CPU 1a e CPU 1b diferem cerca de $5{,}94\%$, mais que seus desvios internos. Portanto, as duas referências são mantidas separadas. O mesmo cuidado é aplicado às três séries V100: não se escolhe apenas a mais rápida para representar todo o experimento.
 
-\subsection{Comparação entre uma e quatro threads na CPU}
-Definem-se a razão de tempos e a eficiência relativa por
+\subsection{Ganho com quatro threads na CPU}
+O speedup relativo e a eficiência com quatro threads são
 \[
 S_4=\frac{\overline T_1}{\overline T_4},\qquad E_4=\frac{S_4}{4}.
 \]
 {\small\input{tabelas/cpu.tex}}
 
-A soma com quatro threads configuradas levou cerca de $5{,}379$ ms. O speedup fica entre $1{,}854$ e $1{,}965$, conforme a série de uma thread adotada, com eficiência entre $46{,}36\%$ e $49{,}11\%$. Não é uma aceleração de quatro vezes, nem uma medição da porcentagem de ocupação da CPU. As referências de uma thread também usam o executável OpenMP compilado com \texttt{-O3}.
+A aceleração fica entre $1{,}854$ e $1{,}965$, conforme a referência de uma thread, e a eficiência entre $46{,}36\%$ e $49{,}11\%$. Isso corresponde a um ganho próximo de duas vezes ao usar quatro threads. Eficiência aqui é a aproximação ao ganho ideal de quatro vezes, não a porcentagem de utilização da CPU.
 
-A soma tem pouco cálculo por byte, de modo que as threads compartilham recursos de cache e memória ao percorrer os vetores. Também há custos de entrada na região paralela e sincronização. Esses mecanismos são compatíveis com ganho sublinear, mas os logs não possuem contadores ou perfis que permitam apontar uma causa exclusiva.
+O acesso contíguo favorece caches e vetorização, mas várias threads compartilham recursos de memória e precisam ser coordenadas. Como há pouco cálculo por elemento, o ganho não precisa acompanhar proporcionalmente o número de threads. Os logs não separam os custos desses mecanismos.
 
-\subsection{O que se pode dizer dos registros em nós com GPU}
-Entre as séries rotuladas GPU, a do nó que lista H200 teve a menor média, aproximadamente $5{,}997$ ms; as séries V100 ficaram entre $12{,}176$ e $13{,}484$ ms. A série CPU com quatro threads foi a mais rápida entre os registros disponíveis.
+\subsection{Comparação da chamada GPU com a CPU}
+{\small\input{tabelas/comparacao.tex}}
 
-Esses são resultados das chamadas medidas nos respectivos ambientes. Não permitem concluir que ``a H200 somou mais rápido que a V100'' ou que ``a CPU venceu uma GPU efetivamente utilizada''. Caso tenha ocorrido fallback, os tempos podem refletir o cálculo nas CPUs dos nós, que também são diferentes. Mesmo após confirmar offload, uma comparação entre nós distintos precisará considerar o host e as transferências.
+As médias V100 ficaram entre $12{,}176$ ms e $13{,}484$ ms. Em relação à CPU com quatro threads, a chamada GPU demorou aproximadamente $2{,}26$ a $2{,}51$ vezes mais. A vantagem CPU também aparece nas duas referências de uma thread, embora seja menor.
 
-Para uma soma isolada, existe apenas uma adição por elemento transferido. Mesmo uma GPU corretamente utilizada pode não compensar os custos de movimentação e lançamento nesse cenário. Essa é uma explicação conceitual para um resultado possível; não é uma decomposição comprovada dos tempos históricos.
+Essa comparação responde à operação medida: somar os vetores a partir da organização de dados do programa. Ela não demonstra que uma soma com os dados já disponíveis na V100 seria mais lenta que o laço CPU, pois esse cenário não foi medido separadamente.
 
-\section{Problemas identificados e encaminhamentos}
-\subsection{Confirmar o local de execução}
-Os rótulos de \texttt{MODO} são escolhidos pelo argumento do programa. Não há chamada a \texttt{omp\_is\_initial\_device()} nos registros. A inspeção estática do executável GPU encontrou uma função host de fallback e a chamada \texttt{GOMP\_target\_ext}, porém não identificou registro de uma imagem de dispositivo NVIDIA. A seção \texttt{.gnu.offload\_funcs}, isoladamente, é uma tabela de funções e não comprova a existência dessa imagem. A inspeção integral está no apêndice.
+\section{Discussão dos custos de execução}
+\subsection{Tempo total e tempo do kernel}
+O \textit{kernel} é a parte do cálculo executada no dispositivo. Para uma operação com dados inicialmente no host e transferência explícita, um modelo conceitual do tempo é
+\[
+T_{GPU}=T_{\text{envio}}+T_{\text{preparação}}+T_{\text{kernel}}+T_{\text{retorno}}+T_{\text{sincronização}}.
+\]
+Na CPU, os vetores já estão na memória do host. Também existe custo para lê-los e escrever a saída, mas não é necessário disponibilizá-los em outro dispositivo e trazer o resultado de volta. Uma GPU pode executar o kernel rapidamente e, ainda assim, perder na soma desses custos.
 
-Esses elementos são compatíveis com fallback, mas os binários não estão ligados a cada série por hashes registrados durante os jobs. A conclusão segura é que o uso efetivo da GPU permanece sem comprovação; os tempos não são apresentados como uma comparação final entre dispositivos.
+\input{diagramas/custos.tex}
 
-O encaminhamento é registrar a quantidade de dispositivos com \path{omp_get_num_devices()}. Dentro da região target, avalia-se \path{omp_is_initial_device()}: retorno 1 indica host; retorno 0 indica execução fora do dispositivo inicial. O programa de diagnóstico do Apêndice~\ref{ap:diagnostico} está preparado para essa verificação, mas não gerou os logs analisados. A confirmação deve ser feita também na região que realiza a soma.
+A interpretação adotada para o resultado é que a movimentação dos dados e os custos de offload não foram compensados pelo pouco cálculo realizado. Cada elemento participa de apenas uma soma. O potencial de paralelismo da GPU não elimina o tempo necessário para disponibilizar as entradas, iniciar a execução e retornar a saída.
 
-\subsection{Compatibilizar compilação e dados}
-O tutorial NPAD possui configurações específicas de compiladores para GPU. A configuração NVHPC, por exemplo, utiliza \texttt{nvc} com \texttt{-mp=gpu}; já \texttt{gcc -fopenmp} depende de como o GCC e o suporte a offload foram instalados. Não se escolhe uma arquitetura de compilação apenas pelo nome do arquivo executável.
+A movimentação considerada ocorre por regiões dos vetores, sem pressupor uma cópia a cada iteração de \texttt{for}. Para a soma completa, são duas regiões de entrada e uma de saída, representadas pelos 120 MB de dados úteis. Em cada novo processo, o programa realiza novamente sua operação, sem reutilizar dados de uma chamada anterior. O custo é grande em relação ao trabalho matemático, mesmo sem uma cópia por elemento.
 
-Antes de repetir a comparação, é preciso registrar a versão e o comando completos do compilador, verificar suporte a \texttt{loop} e ao dispositivo e explicitar as regiões dos vetores ou documentar um modelo de memória compatível. As diretivas propostas não corrigem, sozinhas, uma instalação sem suporte a GPU. O relatório não afirma que essas mudanças já foram executadas no NPAD.
+\subsection{Alcance da análise}
+Os tempos mostram a vantagem CPU para essa soma e essa forma de medição. A comparação envolve nós distintos e se restringe às configurações testadas. A baixa intensidade aritmética oferece uma explicação coerente para o peso da movimentação. Entretanto, os logs não medem envio, kernel e retorno separadamente. Portanto, não se atribui uma porcentagem específica às transferências nem se calcula uma largura de banda a partir de um tempo que inclui outras etapas.
 
-\subsection{Distinguir decisões implementadas de correções pendentes}
+Um algoritmo que realize mais operações por elemento ou aproveite os dados em vários cálculos oferece mais trabalho para amortizar a movimentação. Apenas aumentar $N$ mantém a mesma proporção de uma soma por elemento, embora possa reduzir a importância relativa de custos fixos de lançamento.
+
+\section{Progresso e decisões de implementação}
 \begin{table}[H]
 \centering\small
-\begin{tabular}{p{3.1cm}p{5cm}p{5.1cm}}
+\begin{tabular}{p{3cm}p{5.1cm}p{5.1cm}}
 \toprule
-Ponto & O que existe & Situação ou encaminhamento\\
+Questão & Decisão adotada & Motivo\\
 \midrule
-Vetores grandes & Alocação dinâmica e teste de falha & Implementado; evita depender de uma pilha grande.\\[3pt]
-Argumentos inválidos & Conversão com checagem de faixa e formato & Implementado para tamanho, tolerância e modo.\\[3pt]
-Contagem de erros & Redução paralela do contador & Implementado; zero erros em todos os logs.\\[3pt]
-Dispositivo de execução & Rótulo GPU e listagem de hardware & Confirmar dentro da região target.\\[3pt]
-Acesso aos vetores & Ponteiros de \texttt{malloc}, sem regiões explícitas & Especificar mapeamento ou modelo de memória válido.\\[3pt]
-Aquecimento & Uma execução anterior em processo separado & Repetir dentro do processo para aquecer o mesmo contexto.\\[3pt]
-Reprodução das séries & Script atual cobre apenas parte das configurações & Registrar scripts, ambiente, CPU, dispositivo e alocação por série.\\
+Vetores grandes & Alocação com \texttt{malloc} e teste de falha & Reservar memória sem depender de grandes arrays na pilha.\\[3pt]
+Entradas inválidas & Conversão com checagem de formato e faixa & Evitar tamanhos, tolerâncias e modos inválidos.\\[3pt]
+Laço CPU & \texttt{parallel for} & Distribuir índices independentes entre threads.\\[3pt]
+Modo GPU & \texttt{target}, \texttt{loop} e política \texttt{MANDATORY} no job & Destinar o cálculo ao dispositivo e exigir offload na configuração OpenMP.\\[3pt]
+Verificação & Referência e \texttt{reduction(+:err)} & Comparar a saída e combinar as contagens sem disputa no contador.\\[3pt]
+Comparação de tempos & Mesmos vetores e intervalo em torno da soma & Comparar a operação completa, explicitando seus custos.\\
 \bottomrule
 \end{tabular}
-\caption{Progresso documentado e etapas necessárias para consolidar a comparação. Ausência de registro não é apresentada como solução já aplicada.}
-\label{tab:progresso}
+\caption{Principais decisões da implementação e suas finalidades.}
 \end{table}
 
 \section{Conclusão}
-Foi implementado um programa de soma de vetores com modos CPU e target, entrada parametrizada, alocação dinâmica e verificação paralela. Os 39 registros apresentaram zero erros. Na comparação CPU, quatro threads configuradas reduziram o tempo de aproximadamente dez milissegundos para $5{,}379$ ms, com aceleração próxima de duas vezes.
+Na soma de dez milhões de elementos, a CPU apresentou menor tempo que a V100 em todas as séries selecionadas. Com quatro threads, a média CPU foi de $5{,}379$ ms; na V100, ficou entre $12{,}176$ ms e $13{,}484$ ms. Todos os registros apresentaram zero erros pelo verificador implementado.
 
-Os registros em nós com V100 e H200 permitem comparar os tempos observados, mas não demonstram que a soma executou no acelerador. A principal pendência para concluir a avaliação solicitada é confirmar o offload e o tratamento dos dados com uma compilação compatível, mantendo os custos medidos claramente definidos. Reservar uma GPU, listar seu modelo e imprimir o modo GPU são informações diferentes de verificar o dispositivo de execução.
+O resultado é interpretado a partir do custo da operação completa e da baixa intensidade aritmética: movimentar os dados e iniciar a execução na GPU não foi compensado por apenas uma soma por elemento. A configuração \texttt{MANDATORY} define a exigência de offload, mas não elimina esses custos. A medição não separa as parcelas para quantificá-las individualmente.
 
-A atividade mostra que correção numérica, paralelismo e desempenho precisam ser verificados separadamente. Em um algoritmo de baixa intensidade aritmética, a movimentação de dados e os custos de execução podem ser decisivos. O relatório documenta o progresso e fornece uma base reproduzível para completar essa confirmação, sem atribuir aos registros resultados que eles não comprovam.
+Os resultados mostram que a escolha do recurso de execução depende da quantidade de cálculo por dado e do intervalo efetivamente medido. Para este trabalho simples, a CPU foi a opção mais rápida; a capacidade de cálculo da GPU, sozinha, não determina o desempenho da aplicação completa.
 
 \clearpage\appendix
-\section{Requisitos e proveniência}
-\subsection{Enunciado completo}
+\section{Enunciado e proveniência}
+\subsection{Requisitos completos}
 \lstinputlisting[style=Dados]{dados/requisitosTarefa18.txt}
-\subsection{Proveniência dos arquivos}
+\subsection{Seleção e proveniência dos arquivos}
 \lstinputlisting[style=Dados]{dados/proveniencia.txt}
-\subsection{Referência de hardware utilizada}
+\subsection{Referência de hardware da classe V100}
 \lstinputlisting[style=Dados]{dados/hardware_referencia.txt}
 
-\clearpage\section{Códigos completos da implementação analisada}
-Os arquivos são incluídos por \texttt{\textbackslash lstinputlisting}, sem cortes de linhas. São cópias integrais dos fontes enviados, incluindo as limitações discutidas no corpo do relatório. Não foram substituídos por uma implementação corrigida ao preparar as figuras.
+\clearpage\section{Códigos completos}
+Os códigos e o script utilizados são apresentados integralmente a seguir. A inclusão usa \texttt{\textbackslash lstinputlisting}, sem limites de linhas, para manter os apêndices sincronizados com os arquivos do projeto.
 \subsection{Programa principal: t18.c}
 \lstinputlisting[style=Apendice]{codigos/t18.c}
-\clearpage\subsection{Somas: somas.c}
+\clearpage\subsection{Somas CPU e GPU: somas.c}
 \lstinputlisting[style=Apendice]{codigos/somas.c}
 \subsection{Funções auxiliares: aux18.c}
 \lstinputlisting[style=Apendice]{codigos/aux18.c}
 \clearpage\subsection{Submissão: jobs.sh}
 \lstinputlisting[style=Apendice,language=bash]{codigos/jobs.sh}
 
-\clearpage\section{Diagnóstico proposto para uma nova execução}
-\label{ap:diagnostico}
-O programa abaixo foi preparado como apoio à continuidade e não foi executado no NPAD para gerar este relatório. Deve ser compilado com suporte a offload para o dispositivo disponível e executado dentro de uma alocação. Ele termina com falha se não encontrar dispositivo ou se a região executar no host. Um resultado positivo verifica essa região de diagnóstico; a soma e seu tratamento de dados ainda precisam da mesma confirmação.
-\lstinputlisting[style=Apendice]{codigos/diagnostico_offload.c}
-
-\clearpage\section{Medições completas}
-Os valores são extraídos automaticamente dos arquivos de saída. Aquecimento é a repetição zero. Os nomes das séries preservam a distinção entre arquivos; os nomes de GPU não confirmam offload.
+\clearpage\section{Medições completas e identificação dos arquivos}
+Os aquecimentos são as repetições zero. Todos os valores pertencem às séries CPU e V100 selecionadas; as médias utilizam somente as cinco repetições medidas de cada série.
 {\small\input{tabelas/brutos.tex}}
-\subsection{Hashes dos fontes, logs e binários recebidos}
-Os hashes identificam os arquivos recebidos no GitHub, não uma associação retrospectiva comprovada entre cada binário e cada execução.
+\subsection{Hashes SHA-256 dos fontes e registros selecionados}
 \lstinputlisting[style=Dados]{dados/fontes_e_registros.sha256}
 
-\clearpage\section{Registros integrais das execuções}
+\clearpage\section{Registros integrais das execuções selecionadas}
 \subsection{CPU1a.out}
 \lstinputlisting[style=Dados]{dados/logs/CPU1a.out}
 \clearpage\subsection{CPU1b.out}
 \lstinputlisting[style=Dados]{dados/logs/CPU1b.out}
 \clearpage\subsection{CPU4.out}
 \lstinputlisting[style=Dados]{dados/logs/CPU4.out}
-\clearpage\subsection{GPUa.out}
+\clearpage\subsection{GPUa.out: V100 a}
 \lstinputlisting[style=Dados]{dados/logs/GPUa.out}
-\clearpage\subsection{GPUb.out}
+\clearpage\subsection{GPUb.out: V100 b}
 \lstinputlisting[style=Dados]{dados/logs/GPUb.out}
-\clearpage\subsection{resultado\_gpu\_2133025.out}
-\lstinputlisting[style=Dados]{dados/logs/resultado_gpu_2133025.out}
-\clearpage\subsection{resultado\_gpu\_2134904.out}
+\clearpage\subsection{resultado\_gpu\_2134904.out: V100 c}
 \lstinputlisting[style=Dados]{dados/logs/resultado_gpu_2134904.out}
 
-\clearpage\section{Inspeção estática do executável recebido}
-Os comandos abaixo leem os binários, sem executar a soma. A identificação de código x86-64 do host é normal em executáveis com offload; o ponto discutido é a ausência de evidência de registro de imagem de dispositivo neste material. Uma tabela de funções offload, sozinha, não identifica o local de execução de um log histórico.
-\lstinputlisting[style=Dados]{dados/inspecao_binario.txt}
-
 \clearpage\section{Código completo de geração do gráfico e das tabelas}
-O script lê os sete arquivos de saída, confere os parâmetros e os erros e gera os CSVs, as tabelas e o gráfico. Não recompila nem executa o programa de soma.
+O script utiliza uma lista explícita de arquivos selecionados e verifica a identificação V100 nos logs GPU. Ele extrai os 33 registros, calcula as estatísticas das 30 medições e gera os artefatos do relatório. Não executa novas simulações.
 \lstinputlisting[style=Apendice,language=Python]{gerar_figuras.py}
 
 \clearpage
 \begin{thebibliography}{9}
 \bibitem{enunciado} Material da disciplina de Programação Paralela. \textit{Tarefa 18: Comparando soma de vetores entre CPU e GPU em OpenMP}. Enunciado reproduzido no Apêndice A.
 \bibitem{tutorial} UNIVERSITY OF BRISTOL; NPAD/UFRN. \textit{Programming Your GPU with OpenMP}. Tutorial e adaptação NPAD. Versão NPAD consultada: \texttt{a8ceec4}. Disponível em: \url{https://github.com/UoB-HPC/openmp-tutorial} e \url{https://github.com/NPAD-UFRN/openmp-tutorial}.
-\bibitem{repositorio} PINTO, Matheus Bezeril. \textit{ProgParalela2026.2: Tarefa 18}. Fontes e resultados enviados no commit \texttt{e17b7d0}. Disponível em: \url{https://github.com/39Matheus/ProgParalela2026.2/tree/e17b7d0/Tarefa_18}.
-\bibitem{hardware} NPAD/UFRN. \textit{Hardware}. Especificações de referência indicadas e transcritas pelo autor em 18 de outubro de 2026. Trecho utilizado reproduzido no Apêndice A. Disponível em: \url{https://npad.ufrn.br/npad/hardware}.
-\bibitem{openmp} OPENMP ARCHITECTURE REVIEW BOARD. \textit{OpenMP Application Programming Interface}. Conceitos de target, loop, mapeamento, reduction e consultas ao dispositivo. Disponível em: \url{https://www.openmp.org/specifications/}.
+\bibitem{repositorio} PINTO, Matheus Bezeril. \textit{ProgParalela2026.2: Tarefa 18}. Fontes e registros do experimento disponíveis no commit \texttt{e17b7d0}. Disponível em: \url{https://github.com/39Matheus/ProgParalela2026.2/tree/e17b7d0/Tarefa_18}.
+\bibitem{hardware} NPAD/UFRN. \textit{Hardware}. Especificações de referência da classe V100. Referência de 18 de outubro de 2026, reproduzida no Apêndice A. Disponível em: \url{https://npad.ufrn.br/npad/hardware}.
+\bibitem{openmp} OPENMP ARCHITECTURE REVIEW BOARD. \textit{OpenMP Application Programming Interface}. Conceitos de target, loop, reduction e política de offload. Disponível em: \url{https://www.openmp.org/specifications/}.
 \end{thebibliography}
 \end{document}

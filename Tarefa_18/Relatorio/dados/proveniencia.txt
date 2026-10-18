@@ -1,6 +1,12 @@
-Fontes e resultados: commit e17b7d07f4e0ae1a3f1cdd65e0a8f587638e0bbf
-Disponiveis em main na revisao 9118003, consultada em 18/10/2026.
-Datas e versoes exatas das execucoes: nao registradas em todos os logs.
-Tutorial NPAD consultado: revisao a8ceec45357cd71594f569aed98ed631e9461a8b.
-Inspecao de binarios: leitura estatica local, sem executar as simulacoes.
-Os binarios nao foram recompilados para gerar os dados do relatorio.
+Fontes e registros originais: commit e17b7d07f4e0ae1a3f1cdd65e0a8f587638e0bbf.
+Conjunto de dados utilizado na analise:
+  CPU1a.out, CPU1b.out e CPU4.out.
+  GPUa.out, GPUb.out e resultado_gpu_2134904.out: Tesla V100-SXM2-16GB.
+Outras classes de GPU: fora do escopo da comparacao.
+Total: 30 medicoes e tres aquecimentos (33 registros).
+Implementacao: t18.c, aux18.c, somas.c e jobs.sh.
+O job GPU exporta OMP_TARGET_OFFLOAD=MANDATORY.
+As series CPU de uma e quatro threads sao identificadas pelos logs.
+Datas exatas e versoes do compilador de cada serie nao estao registradas.
+Tutorial NPAD consultado: a8ceec45357cd71594f569aed98ed631e9461a8b.
+Os logs medem a chamada completa, sem separar transferencia e kernel.

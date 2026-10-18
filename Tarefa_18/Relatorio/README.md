@@ -1,46 +1,52 @@
-# Relatório da Tarefa 18
+# Relatório da Tarefa 18 — CPU e V100
 
-[`relatorio.pdf`](relatorio.pdf) é o documento para leitura, com explicação dos
-conceitos, ilustrações TikZ, tabela de resultados, gráfico e códigos completos
-nos apêndices. [`overleaf.zip`](overleaf.zip) é o projeto independente.
+[`relatorio.pdf`](relatorio.pdf) contém a análise, cinco ilustrações TikZ,
+gráfico, tabelas e os códigos e logs completos nos apêndices.
+[`overleaf.zip`](overleaf.zip) é o projeto independente para o Overleaf.
 
-**Situação da análise:** os logs mostram somas corretas e permitem comparar
-os tempos registrados. Eles não comprovam que o modo chamado GPU executou
-na GPU. O relatório explica a diferença entre presença do hardware e offload,
-o mapeamento de ponteiros e as limitações dos binários e da compilação enviados.
-Por isso, documenta o progresso e a pendência de confirmação; não apresenta
-os tempos como uma comparação final e verificada de CPU contra GPU.
+## Conjunto de dados
 
-## Dados usados
+Esta revisão utiliza:
 
-- Fontes e registros do commit `e17b7d0`, presentes em `main` na revisão `9118003`.
-- Sete logs: três séries CPU e quatro séries declaradas GPU.
-- 35 tempos medidos, quatro aquecimentos em processos separados, todos com
-  `N=10000000`, tolerância `1e-9` e zero erros registrados.
-- Os nomes V100 e H200 vêm do `nvidia-smi` dos logs, não de uma confirmação
-  feita dentro da região target.
-- Hardware de referência transcrito pelo autor da página do NPAD; o trecho
-  está em `dados/hardware_referencia.txt`. O modelo de CPU de `service3`
-  não é inferido a partir dessa referência.
-- Inspeção estática dos executáveis recebidos, sem executá-los e sem novas
-  medições. Os hashes estão em `dados/fontes_e_registros.sha256`.
+- CPU: `CPU1a.out`, `CPU1b.out` e `CPU4.out`.
+- V100: `GPUa.out`, `GPUb.out` e `resultado_gpu_2134904.out`.
 
-O código principal e os resultados originais, na pasta superior, foram
-preservados. `codigos/diagnostico_offload.c` é um apoio novo, ainda não executado
-no NPAD. Deve ser compilado com suporte à GPU e executado dentro de uma
-alocação; seu sucesso confirma sua própria região target, não retrospectivamente
-as execuções históricas nem o tratamento de dados do programa de soma.
+São 30 medições e três aquecimentos. Registros de outras classes de GPU
+permanecem como histórico na pasta superior e não entram neste relatório,
+no ZIP ou nas estatísticas. Os fontes utilizados são `t18.c`, `aux18.c`,
+`somas.c` e `jobs.sh`, incluídos integralmente nos apêndices.
+
+## Resultados e interpretação
+
+A média CPU com quatro threads foi de aproximadamente 5,379 ms; na V100,
+de 12,176 a 13,484 ms. A CPU foi mais rápida em todas as séries selecionadas.
+
+A análise considera o tempo da chamada completa, com os custos de offload,
+e a baixa quantidade de cálculo por dado movimentado. Os logs não separam
+envio, kernel e retorno, portanto não são atribuídas porcentagens de tempo
+a essas parcelas nem se calcula uma largura de banda com o tempo total.
+
+Os 120 MB apresentados são o volume de dados úteis de duas entradas e uma
+saída em um modelo de transferência explícita, não uma medição de tráfego.
+O fonte não contém cláusulas `map` explícitas; o modelo efetivo de acesso
+depende do compilador e do runtime. O código foi preservado na análise.
+
+O job GPU contém `OMP_TARGET_OFFLOAD=MANDATORY`. O texto explica a política
+OpenMP, seus pressupostos de suporte a offload e a distinção entre exigir
+o dispositivo, tratar os dados e distribuir trabalho entre várias GPUs.
+
+CV é o coeficiente de variação: mede a dispersão relativa dos tempos e não
+o erro numérico da soma. Sua definição e um exemplo aparecem no relatório.
 
 ## Overleaf
 
 1. Importe `overleaf.zip` como um novo projeto.
 2. Selecione `main.tex` e o compilador **pdfLaTeX**.
-3. Compile normalmente. Não precisa executar Python nem habilitar shell escape.
+3. Compile normalmente, sem executar Python nem habilitar shell escape.
 
-O preâmbulo é completo e todos os caminhos são relativos a esta pasta.
-Mantenha `codigos/`, `dados/`, `diagramas/`, `figuras/`, `tabelas/` e
-`gerar_figuras.py`. Os fontes são incluídos por `\lstinputlisting` sem limites
-de linhas. Os registros e a inspeção também estão integrais no próprio PDF.
+O preâmbulo é completo. Preserve `codigos/`, `dados/`, `diagramas/`, `figuras/`,
+`tabelas/` e `gerar_figuras.py`. A inclusão dos códigos usa `\lstinputlisting`,
+sem cortes. Os seis logs também estão integrais no PDF.
 
 ## VS Code ou terminal no Ubuntu
 
@@ -50,33 +56,20 @@ sudo apt install latexmk texlive-latex-base texlive-latex-recommended \
 latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
 ```
 
-Abra `Tarefa_18/Relatorio` no VS Code com LaTeX Workshop. A configuração em
-`.vscode/` coloca os temporários em `build/`. Depois de editar, revise
-`build/main.pdf` e copie para `relatorio.pdf` para atualizar a versão publicada.
+Abra `Tarefa_18/Relatorio` com LaTeX Workshop. Os temporários vão para `build/`.
+Após uma edição, revise `build/main.pdf` e copie a versão final para
+`relatorio.pdf` para atualizar a cópia publicada.
 
-## Gráfico e tabelas
+## Regeneração dos artefatos
 
-`gerar_figuras.py` lê os sete logs, verifica parâmetros e contagens, extrai os
-39 registros e calcula as médias e os desvios amostrais das 35 medições.
-Não executa os programas C. Para regenerar os artefatos:
+`gerar_figuras.py` usa uma lista explícita dos seis arquivos e verifica a
+identificação V100 nos logs GPU. Ele gera os CSVs, o gráfico e as tabelas sem
+executar os programas C. Para regenerar:
 
 ```bash
 python gerar_figuras.py
 ```
 
-Requer Matplotlib apenas para essa regeneração. A compilação LaTeX usa a
-figura e as tabelas já incluídas. As barras representam um desvio padrão
-amostral. As séries de uma thread CPU permanecem separadas, e não se calcula
-um speedup entre GPUs sem confirmar o dispositivo utilizado.
-
-## Para consolidar a comparação no NPAD
-
-1. Registrar compilador, flags, módulos, alocação, CPU e dispositivos disponíveis.
-2. Confirmar suporte às diretivas e à GPU, com o diagnóstico e a própria soma.
-3. Especificar as regiões dos vetores ou documentar um modelo de memória válido.
-4. Repetir aquecimento e medições no mesmo processo se a intenção for medir
-   um contexto já aquecido, declarando quais custos continuam no intervalo.
-5. Salvar os novos scripts e logs separadamente e então atualizar o relatório.
-
-Reservar quatro GPUs não divide automaticamente a soma entre elas. O código
-analisado possui uma região target e não implementa distribuição entre GPUs.
+Matplotlib é necessário apenas nessa etapa. As barras representam um desvio
+padrão amostral. Os aquecimentos ficam fora das médias; as séries são mantidas
+separadas. Os hashes e a proveniência dos arquivos estão em `dados/` e no PDF.
