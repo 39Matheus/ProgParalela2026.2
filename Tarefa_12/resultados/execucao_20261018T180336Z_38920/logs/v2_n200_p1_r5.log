@@ -1,0 +1,4 @@
+v2 | NX=200 NY=200 | passos=2000 | modo=2 | threads=1
+dt=0.0005 | tempo fisico final=1
+Tempo de calculo: 0.987380994 segundos
+RESULTADO;v2;200;200;2000;2;1;1;0.987380994;1.0201061929665676;0;0.12117039682597341;0.034912284992957017
