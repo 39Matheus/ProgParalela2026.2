@@ -1,0 +1,57 @@
+======================================
+AMBIENTE
+======================================
+Host:
+gpunode0.npad.internal
+
+CUDA:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/bin/nvcc
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Tue_Oct_29_23:50:19_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+
+NVC:
+/usr/bin/which: no nvc in (/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/bin:/home/mbpinto/.local/bin:/home/mbpinto/bin:/opt/npad/bin:/usr/condabin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin)
+/var/tmp/slurmd.spool/job2202311/slurm_script: line 46: nvc: command not found
+
+NSYS:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/bin/nsys
+NVIDIA Nsight Systems version 2024.5.1.113-245134619542v0
+
+======================================
+GPU
+======================================
+Thu Oct  8 18:52:51 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 560.35.03              Driver Version: 560.35.03      CUDA Version: 12.6     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  Tesla V100-SXM2-16GB           Off |   00000000:04:00.0 Off |                    0 |
+| N/A   33C    P0             38W /  300W |       1MiB /  16384MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+WARNING: infoROM is corrupted at gpu 0000:04:00.0
+
+======================================
+COMPILACAO
+======================================
+Compilador: nvc
+OpenMP: GPU offload
+GPU: NVIDIA V100 / compute capability 7.0
+
+/var/tmp/slurmd.spool/job2202311/slurm_script: line 79: nvc: command not found
+
+ERRO: compilacao falhou.

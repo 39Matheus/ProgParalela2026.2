@@ -1,0 +1,11 @@
+    Nome da Tarefa:
+    Tarefa 20: Otimizando transferência de dados entre GPU e CPU
+    Descrição:
+
+    Faça o exercício de transferência de calor (heat.c, slide 102) do tutorial de programação de GPUs com OpenMP. Explore as diretivas de movimentação de dados para evitar que esse aspecto domine a execução, evitando a GPU fique muito tempo ociosa e otimizando o desempenho.
+
+    Tutorial sobre programação de GPUs com OpenMP da Universidade de Bristol:
+
+    https://github.com/UoB-HPC/openmp-tutorial
+
+    https://github.com/NPAD-UFRN/openmp-tutorial (adaptação para o NPAD)

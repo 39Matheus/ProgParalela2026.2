@@ -1,0 +1,39 @@
+======================================
+COMPILACAO
+======================================
+Compilador: /opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/compilers/bin/nvc
+
+nvvmCompileProgram error 3: NVVM_ERROR_IR_VERSION_MISMATCH.
+Error: IR version 1.2 incompatible with current version 2.0
+/tmp/pgacc4t2ZbO1mG4GM6.gpu: error: incompatible IR detected. Possible mix of compiler/IR from different releases.
+NVC++-W-0155-Compiler failed to translate accelerator region (see -Minfo messages): Device compiler exited with error status code (heat_t18.c: 1)
+NVC++/x86-64 Linux 22.5-0: compilation completed with warnings
+Compilacao concluida.
+
+======================================
+EXECUCAO GPU
+======================================
+----- Warm-up -----
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 63: 474529 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+----- Execucao 1 -----
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 66: 474544 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+----- Execucao 2 -----
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 66: 474557 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+----- Execucao 3 -----
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 66: 474570 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+----- Execucao 4 -----
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 66: 474583 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+----- Execucao 5 -----
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 66: 474597 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+======================================
+NSYS - PROFILING
+======================================
+/var/tmp/slurmd.spool/job2202319/slurm_script: line 83: nsys: command not found
+
+ERRO: o profiling com nsys falhou.

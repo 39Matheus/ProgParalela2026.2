@@ -1,0 +1,287 @@
+======================================
+COMPILACAO
+======================================
+Compilacao concluida.
+
+======================================
+GPU
+======================================
+Tesla V100-SXM2-16GB
+
+======================================
+EXECUCAO GPU
+======================================
+----- Warm-up -----
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.033505
+Total time (s): 0.084457
+--------------------
+
+----- Execucao 1 -----
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.033503
+Total time (s): 0.085023
+--------------------
+
+----- Execucao 2 -----
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.032833
+Total time (s): 0.083516
+--------------------
+
+----- Execucao 3 -----
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.033652
+Total time (s): 0.084771
+--------------------
+
+----- Execucao 4 -----
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.032981
+Total time (s): 0.083777
+--------------------
+
+----- Execucao 5 -----
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.032866
+Total time (s): 0.083396
+--------------------
+
+======================================
+NSYS - PROFILING
+======================================
+
+ MMS heat equation
+
+--------------------
+Problem input
+
+ Grid size: 1000 x 1000
+ Cell width: 9.990010E-01
+ Grid length: 1000.000000 x 1000.000000
+
+ Alpha: 1.000000E-01
+
+ Steps: 10
+ Total time: 5.000000E-01
+ Time step: 5.000000E-02
+--------------------
+Stability
+
+ r value: 0.005010
+--------------------
+Results
+
+Error (L2norm): 3.808796E-10
+Solve time (s): 0.033474
+Total time (s): 0.088355
+--------------------
+Collecting data...
+Generating '/tmp/nsys-report-b745.qdstrm'
+[1/1] [0%                          ] heat_1000.nsys-rep[1/1] [0%                          ] heat_1000.nsys-rep[1/1] [8%                          ] heat_1000.nsys-rep[1/1] [9%                          ] heat_1000.nsys-rep[1/1] [===========50%              ] heat_1000.nsys-rep[1/1] [======================91%   ] heat_1000.nsys-rep[1/1] [======================92%   ] heat_1000.nsys-rep[1/1] [=======================93%  ] heat_1000.nsys-rep[1/1] [=======================94%  ] heat_1000.nsys-rep[1/1] [========================100%] heat_1000.nsys-rep[1/1] [========================100%] heat_1000.nsys-rep[1/1] [========================100%] heat_1000.nsys-rep
+Generated:
+    /home/mbpinto/Tarefa_19/heat_1000.nsys-rep
+
+Profiling concluido com sucesso.
+Arquivo: heat_1000.nsys-rep
+
+======================================
+NSYS - ESTATISTICAS
+======================================
+Generating SQLite file heat_1000.sqlite from heat_1000.nsys-rep
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/nvtx_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain NV Tools Extension (NVTX) data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/osrt_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain OS Runtime trace data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/cuda_api_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain CUDA trace data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/cuda_gpu_kern_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain CUDA kernel data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/cuda_gpu_mem_time_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain GPU memory data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/cuda_gpu_mem_size_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain GPU memory data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/openmp_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain OpenMP event data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/opengl_khr_range_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain KHR Extension (KHR_DEBUG) data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/opengl_khr_gpu_range_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain GPU KHR Extension (KHR_DEBUG) data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/vulkan_marker_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain Vulkan Debug Extension (Vulkan Debug Util) data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/vulkan_gpu_marker_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain GPU Vulkan Debug Extension (GPU Vulkan Debug markers) data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/dx11_pix_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain DX11 CPU debug markers.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/dx12_gpu_marker_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain DX12 GPU debug markers.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/dx12_pix_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain DX12 CPU debug markers.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/wddm_queue_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain WDDM context data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/um_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain CUDA memory transfers data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/um_total_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain CUDA memory transfers data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/um_cpu_page_faults_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain CUDA Unified Memory CPU page faults data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/openacc_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain OpenACC event data.
+
+Processing [heat_1000.sqlite] with [/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/12.6/nsight-systems-2024.5.1/host-linux-x64/reports/syscall_sum.py]... 
+SKIPPED: heat_1000.sqlite does not contain syscall data.
+
+
+======================================
+FIM
+======================================

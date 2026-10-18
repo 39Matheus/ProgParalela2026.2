@@ -1,0 +1,12 @@
+
+Nome da Tarefa:
+Tarefa 19: Simulando transferência de calor em GPU com OpenMP
+Descrição:
+
+Faça o exercício de transferência de calor (heat.c, slide 64) do tutorial de programação de GPUs com OpenMP. Explore as diretivas de paralelização e movimentação de dados para copiar dados entre host e dispositivo. Experimente com diferentes tamanhos de problema perfilando o programa com o nsys.
+
+Tutorial sobre programação de GPUs com OpenMP da Universidade de Bristol:
+
+https://github.com/UoB-HPC/openmp-tutorial
+
+https://github.com/NPAD-UFRN/openmp-tutorial (adaptação para o NPAD)

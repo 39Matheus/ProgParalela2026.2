@@ -1,0 +1,65 @@
+======================================
+AMBIENTE
+======================================
+Host:
+gpunode0.npad.internal
+
+HPC SDK:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5
+
+CUDA:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/cuda/11.7
+
+NVC:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/compilers/bin/nvc
+
+nvc 22.5-0 64-bit target on x86-64 Linux -tp haswell 
+NVIDIA Compilers and Tools
+Copyright (c) 2022, NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+NVCC:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/compilers/bin/nvcc
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2024 NVIDIA Corporation
+Built on Tue_Oct_29_23:50:19_PDT_2024
+Cuda compilation tools, release 12.6, V12.6.85
+Build cuda_12.6.r12.6/compiler.35059454_0
+
+NSYS:
+/opt/npad/shared/compilers/nvidia_hpc_sdk/Linux_x86_64/22.5/compilers/bin/nsys
+NVIDIA Nsight Systems version 2022.2.1.31-5fe97ab
+
+======================================
+GPU
+======================================
+Tesla V100-SXM2-16GB
+
+======================================
+COMPILACAO
+======================================
+Compilador: nvc
+OpenMP: GPU offload
+CUDA: 11.7
+GPU: NVIDIA V100
+
+nvvmCompileProgram error 3: NVVM_ERROR_IR_VERSION_MISMATCH.
+Error: IR version 1.2 incompatible with current version 2.0
+/tmp/pgaccPgPZb7Q_1XaSq.gpu: error: incompatible IR detected. Possible mix of compiler/IR from different releases.
+NVC++-W-0155-Compiler failed to translate accelerator region (see -Minfo messages): Device compiler exited with error status code (heat_t18.c: 1)
+NVC++/x86-64 Linux 22.5-0: compilation completed with warnings
+
+Compilacao concluida.
+
+======================================
+EXECUTAVEL
+======================================
+-rwxr-xr-x 1 mbpinto dca3703 39K Oct  8 18:59 heat_gpu
+
+======================================
+EXECUCAO GPU
+======================================
+----- Warm-up -----
+/var/tmp/slurmd.spool/job2202314/slurm_script: line 170: 473685 Aborted                 (core dumped) ./heat_gpu 1000 10
+
+ERRO: warm-up falhou.
+Codigo de retorno: 134
